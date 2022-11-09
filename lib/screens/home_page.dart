@@ -8,10 +8,14 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: ResponsiveDevice(
-        desktopUI: SecondPage(),
-        mobileUi: LandingPage(),
+    return Scaffold(
+      body: Column(
+        children: const [
+          ResponsiveDevice(
+            desktopUI: SecondPage(),
+            mobileUi: LandingPage(),
+          ),
+        ],
       ),
     );
   }

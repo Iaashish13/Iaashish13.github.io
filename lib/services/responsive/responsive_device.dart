@@ -4,24 +4,30 @@ import 'package:flutter/material.dart';
 // render UI as parameters.
 
 class ResponsiveDevice extends StatelessWidget {
-  final Widget mobileUi;
-  final Widget desktopUI;
-  final bool? bothareSame;
+  final Widget? mobileUi;
+  final Widget? desktopUI;
+  final bool bothareSame;
+  final Widget? sameWidget;
   const ResponsiveDevice(
       {Key? key,
       required this.mobileUi,
       required this.desktopUI,
-      this.bothareSame})
+      this.sameWidget,
+      this.bothareSame = false})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      if (constraints.maxWidth < 600) {
-        return mobileUi;
-      } else {
-        return desktopUI;
-      }
-    });
+    return bothareSame == false
+        ? Expanded(
+            child: LayoutBuilder(builder: (context, constraints) {
+              if (constraints.maxWidth < 600) {
+                return mobileUi!;
+              } else {
+                return desktopUI!;
+              }
+            }),
+          )
+        : sameWidget!;
   }
 }
