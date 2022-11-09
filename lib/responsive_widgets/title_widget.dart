@@ -9,7 +9,7 @@ class TitleWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: titles
-          .map((e) => Expanded(
+          .map((e) => InkWell(
                 child: Container(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
@@ -27,9 +27,7 @@ class TitleWidget extends StatelessWidget {
                     )),
               ))
           .toList()
-        ..add(Expanded(
-            child: IconButton(
-                onPressed: () {}, icon: const Icon(Icons.dark_mode)))),
+        ..add(const InkWell(child: Icon(Icons.dark_mode))),
     );
   }
 }
