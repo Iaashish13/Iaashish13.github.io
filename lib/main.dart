@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_website/features/theme/cubit/theme_cubit_cubit.dart';
+import 'package:my_website/features/theme/dark_theme.dart';
+import 'package:my_website/features/theme/light_theme.dart';
 import 'package:my_website/services/routes/routes.gr.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(MyApp());
 }
 
@@ -11,12 +17,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routeInformationParser: _appRouter.defaultRouteParser(),
-      routerDelegate: _appRouter.delegate(),
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ChangeThemeCubit>(create: (context) => ChangeThemeCubit())
+      ],
+      child: BlocBuilder<ChangeThemeCubit, bool>(
+        builder: (context, state) {
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            routeInformationParser: _appRouter.defaultRouteParser(),
+            routerDelegate: _appRouter.delegate(),
+            title: 'My website',
+            theme: state ? darkTheme : lightTheme,
+          );
+        },
       ),
     );
   }

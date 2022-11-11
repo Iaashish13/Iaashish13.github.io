@@ -15,7 +15,8 @@ class ResponsiveDevice extends StatelessWidget {
       this.sameWidget,
       this.bothareSame = false})
       : super(key: key);
-
+static bool isMobile(BuildContext context) =>
+      MediaQuery.of(context).size.width < 600;
   @override
   Widget build(BuildContext context) {
     return bothareSame == false
@@ -31,3 +32,5 @@ class ResponsiveDevice extends StatelessWidget {
         : sameWidget!;
   }
 }
+
+
