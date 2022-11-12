@@ -29,7 +29,8 @@ class TitleWidget extends StatelessWidget {
                     )),
               ))
           .toList()
-        ..add(InkWell(
+        ..add(
+          InkWell(
             onTap: () {},
             child: BlocBuilder<ChangeThemeCubit, bool>(
               builder: (context, state) {
@@ -40,7 +41,9 @@ class TitleWidget extends StatelessWidget {
                           .switchTheme(isDark: value);
                     });
               },
-            ))),
+            ),
+          ),
+        ),
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 final lightTheme = ThemeData(
+  backgroundColor: Colors.white,
+  iconTheme: const IconThemeData(color: Colors.black, size: 18),
   appBarTheme:
       const AppBarTheme(backgroundColor: Colors.blueAccent, elevation: 1),
   primaryColor: Colors.blueAccent,

@@ -8,10 +8,13 @@ class SecondPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: const [
-          TitleWidget(),
+        children: [
+          const TitleWidget(),
           Center(
-            child: Text('Responsive design'),
+            child: Text(
+              'Responsive design',
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
           ),
         ],
       ),

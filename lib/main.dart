@@ -3,10 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_website/features/theme/cubit/theme_cubit_cubit.dart';
 import 'package:my_website/features/theme/dark_theme.dart';
 import 'package:my_website/features/theme/light_theme.dart';
+import 'package:my_website/injector.dart';
 import 'package:my_website/services/routes/routes.gr.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await setupLocator();
 
   runApp(MyApp());
 }
@@ -19,7 +21,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<ChangeThemeCubit>(create: (context) => ChangeThemeCubit())
+        BlocProvider<ChangeThemeCubit>(
+            create: (context) => ChangeThemeCubit()..getTheme())
       ],
       child: BlocBuilder<ChangeThemeCubit, bool>(
         builder: (context, state) {

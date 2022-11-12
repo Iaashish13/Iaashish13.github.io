@@ -12,17 +12,15 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
       extendBodyBehindAppBar: true,
       appBar: ResponsiveDevice.isMobile(context)
           ? AppBar(
-              backgroundColor: Colors.white,
+              backgroundColor: Theme.of(context).backgroundColor,
               elevation: 0,
-              iconTheme: const IconThemeData(color: Colors.black),
+              iconTheme: Theme.of(context).iconTheme,
             )
           : null,
       drawer: ResponsiveDevice.isMobile(context) ? const DrawerWidget() : null,

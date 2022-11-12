@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 final darkTheme = ThemeData(
+  backgroundColor: Colors.black,
   fontFamily: 'Poppins',
+  iconTheme: const IconThemeData(color: Colors.white, size: 18),
   appBarTheme:
       const AppBarTheme(backgroundColor: Color(0xff121212), elevation: 1),
   primaryColor: Colors.blueAccent,
