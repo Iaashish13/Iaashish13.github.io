@@ -4,18 +4,17 @@ import 'package:my_website/features/theme/cubit/theme_cubit_cubit.dart';
 import 'package:my_website/features/theme/dark_theme.dart';
 import 'package:my_website/features/theme/light_theme.dart';
 import 'package:my_website/injector.dart';
-import 'package:my_website/services/routes/routes.gr.dart';
+import 'package:my_website/screens/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
-  final _appRouter = AppRouter();
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +25,9 @@ class MyApp extends StatelessWidget {
       ],
       child: BlocBuilder<ChangeThemeCubit, bool>(
         builder: (context, state) {
-          return MaterialApp.router(
+          return MaterialApp(
+            home: const Homepage(),
             debugShowCheckedModeBanner: false,
-            routeInformationParser: _appRouter.defaultRouteParser(),
-            routerDelegate: _appRouter.delegate(),
             title: 'My website',
             theme: state ? darkTheme : lightTheme,
           );
