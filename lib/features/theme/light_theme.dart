@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 final lightTheme = ThemeData(
-  backgroundColor: Colors.white,
+
   iconTheme: const IconThemeData(color: Colors.black, size: 18),
   appBarTheme:
       const AppBarTheme(backgroundColor: Colors.blueAccent, elevation: 1),
@@ -9,16 +9,16 @@ final lightTheme = ThemeData(
   fontFamily: 'Poppins',
   scaffoldBackgroundColor: Colors.white,
   textTheme: const TextTheme(
-      headline5: TextStyle(
+      displayMedium: TextStyle(
           fontWeight: FontWeight.w600, fontSize: 20, color: Colors.black),
-      bodyText1: TextStyle(
+      bodyMedium: TextStyle(
         fontWeight: FontWeight.w500,
         fontSize: 14,
         color: Colors.black,
       ),
-      bodyText2: TextStyle(
+      bodySmall: TextStyle(
         fontWeight: FontWeight.w300,
         fontSize: 13,
         color: Colors.grey,
-      )),
+      ),),
 );

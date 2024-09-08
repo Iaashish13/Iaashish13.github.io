@@ -25,7 +25,7 @@ class TitleWidget extends StatelessWidget {
                     child: Text(
                       e,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headline5,
+                      style: Theme.of(context).textTheme.displayLarge,
                     )),
               ))
           .toList()

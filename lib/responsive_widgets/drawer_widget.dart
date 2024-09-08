@@ -9,7 +9,7 @@ class DrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Theme.of(context).backgroundColor,
+ 
       child: ListView(
           children: listofDrawer
               .map(
@@ -25,7 +25,7 @@ class DrawerWidget extends StatelessWidget {
                     ),
                     title: Text(
                       e.title,
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     onTap: () {},
                   ),
@@ -46,7 +46,7 @@ class DrawerWidget extends StatelessWidget {
                     ),
                     title: Text(
                       'Change Theme',
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     onTap: () {
                       BlocProvider.of<ChangeThemeCubit>(context)
