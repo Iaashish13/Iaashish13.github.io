@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ChangeThemeCubit extends Cubit<bool> {
   ChangeThemeCubit() : super(false);
 
-  getTheme() async {
+  void getTheme() async {
     bool? isTheme =
         locator<SharedPreferences>().getBool(StringConstants.themeConst);
     if (isTheme == true) {
@@ -14,12 +14,13 @@ class ChangeThemeCubit extends Cubit<bool> {
     } else if (isTheme == false) {
       emit(false);
     } else {
-      emit(false);
+      emit(true);
     }
   }
 
   Future<void> switchTheme({required bool isDark}) async {
     locator<SharedPreferences>().setBool(StringConstants.themeConst, isDark);
+
     emit(isDark);
   }
 }

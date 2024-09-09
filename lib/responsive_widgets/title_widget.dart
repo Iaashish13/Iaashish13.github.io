@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_website/constants/constants.dart';
-import 'package:my_website/features/theme/cubit/theme_cubit_cubit.dart';
+import 'package:my_website/core/theme/cubit/theme_cubit_cubit.dart';
 
 class TitleWidget extends StatelessWidget {
   const TitleWidget({Key? key}) : super(key: key);

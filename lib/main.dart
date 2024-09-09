@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_website/core/route/route.dart';
-import 'package:my_website/features/theme/cubit/theme_cubit_cubit.dart';
-import 'package:my_website/features/theme/dark_theme.dart';
-import 'package:my_website/features/theme/light_theme.dart';
+import 'package:my_website/core/theme/cubit/theme_cubit_cubit.dart';
+import 'package:my_website/core/theme/dark_theme.dart';
+import 'package:my_website/core/theme/light_theme.dart';
 import 'package:my_website/injector.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +28,6 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<ChangeThemeCubit, bool>(
         builder: (context, state) {
           return MaterialApp.router(
-           
             routerConfig: router,
             debugShowCheckedModeBanner: false,
             title: 'My website',
