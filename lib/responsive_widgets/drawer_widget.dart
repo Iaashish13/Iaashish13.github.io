@@ -1,19 +1,27 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+
 import 'package:my_website/constants/constants.dart';
 import 'package:my_website/core/theme/cubit/theme_cubit_cubit.dart';
+import 'package:my_website/features/home/presentation/root_page.dart';
 
 class DrawerWidget extends StatelessWidget {
-  const DrawerWidget({Key? key}) : super(key: key);
+  final void Function(int index)? onTap;
+  const DrawerWidget({
+    Key? key,
+    this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
- 
       child: ListView(
           children: listofDrawer
-              .map(
-                (e) => Padding(
+              .mapIndexed(
+                (index, e) => Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: ListTile(
                     dense: true,
@@ -27,7 +35,10 @@ class DrawerWidget extends StatelessWidget {
                       e.title,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      context.pop();
+                      onTap!(index);
+                    },
                   ),
                 ),
               )

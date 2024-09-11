@@ -17,10 +17,12 @@ import 'package:my_website/features/home/presentation/root_page.dart';
  */
 class AppMenuBar extends StatefulWidget {
   final void Function(int index)? onTap;
+  final void Function()? onDrawerTap;
 
   const AppMenuBar({
     Key? key,
     this.onTap,
+    this.onDrawerTap,
   }) : super(key: key);
 
   @override
@@ -34,7 +36,7 @@ class _AppMenuBarState extends State<AppMenuBar> {
     'Categories',
     'About',
   ];
-  final _selectionNotifier = ValueNotifier<int>(0);
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -65,7 +67,7 @@ class _AppMenuBarState extends State<AppMenuBar> {
                       Icons.menu,
                       size: 28,
                     ),
-                    onPressed: () {},
+                    onPressed: widget.onDrawerTap,
                   ),
                 )
               ] else
@@ -73,40 +75,34 @@ class _AppMenuBarState extends State<AppMenuBar> {
                   child: Wrap(
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
-                      ..._tabList
-                          .mapIndexed((index, e) => ValueListenableBuilder<int>(
-                              valueListenable: _selectionNotifier,
-                              builder: (context, value, child) {
-                                return Column(
-                                  children: [
-                                    TextButton(
-                                      onPressed: () {
-                                        widget.onTap!(index);
-                                        _selectionNotifier.value = index;
-                                      },
-                                      child: Text(
-                                        e,
-                                        style: theme.textTheme.bodyLarge
-                                            ?.copyWith(
-                                                height: 1.5,
-                                                decoration: value == index
-                                                    ? TextDecoration.underline
-                                                    : TextDecoration.none,
-                                                decorationThickness: 1,
-                                                color: Colors.transparent,
-                                                shadows: [
-                                              Shadow(
-                                                  color: theme.brightness ==
-                                                          Brightness.light
-                                                      ? Colors.black
-                                                      : Colors.white,
-                                                  offset: const Offset(0, -5))
-                                            ]),
+                      ..._tabList.mapIndexed((index, e) => Column(
+                            children: [
+                              TextButton(
+                                onPressed: () {
+                                  widget.onTap!(index);
+                                },
+                                child: Text(
+                                  e,
+                                  style: theme.textTheme.bodyLarge?.copyWith(
+                                      //     height: 1.5,
+                                      //     decoration: value == index
+                                      //         ? TextDecoration.underline
+                                      //         : TextDecoration.none,
+                                      //     decorationThickness: 1,
+                                      //     color: Colors.transparent,
+                                      //     shadows: [
+                                      //   Shadow(
+                                      //       color: theme.brightness ==
+                                      //               Brightness.light
+                                      //           ? Colors.black
+                                      //           : Colors.white,
+                                      //       offset: const Offset(0, -5))
+                                      // ],
                                       ),
-                                    ),
-                                  ],
-                                );
-                              })),
+                                ),
+                              ),
+                            ],
+                          )),
                       BlocBuilder<ChangeThemeCubit, bool>(
                         builder: (context, state) {
                           return IconButton(

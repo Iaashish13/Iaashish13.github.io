@@ -6,7 +6,10 @@ import 'package:go_router/go_router.dart';
 
 import 'package:my_website/app/widgets/app_bar.dart';
 import 'package:my_website/app/widgets/responsive_padding.dart';
+import 'package:my_website/core/responsive/device_type.dart';
 import 'package:my_website/features/home/presentation/widget/user_info_widget.dart';
+import 'package:my_website/responsive_widgets/drawer_widget.dart';
+import 'package:my_website/services/responsive/responsive_device.dart';
 
 class RootPage extends StatelessWidget {
   final StatefulNavigationShell statefulNavigationShell;
@@ -19,60 +22,38 @@ class RootPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      // drawer: ResponsiveDevice.isMobile(context) ? const DrawerWidget() : null,
+      endDrawer: DeviceType.isMobile(context)
+          ? DrawerWidget(
+              onTap: (index) => statefulNavigationShell.goBranch(index),
+            )
+          : null,
       body: SafeArea(
         child: ResponsivePadding(
           child: Column(
             children: [
-              AppMenuBar(
-                onTap: (index) {
-                  statefulNavigationShell.goBranch(index);
-                },
-              ),
-              // Wrap(
-              //     children: _tabList
-              //         .mapIndexed((index, e) => GestureDetector(
-              //             onTap: () {
-              //               widget.statefulNavigationShell.goBranch(index);
-              //             },
-              //             child: Text(e)))
-              //         .toList()),
-              // TabBar(
-              //     isScrollable: false,
-
-              //     onTap: (value) =>
-              //         widget.statefulNavigationShell.goBranch(value),
-              //     controller: _tabController,
-              //     tabs: _tabList.map((e) => Text(e)).toList()),
-              // const AppMenuBar(),
+              Builder(builder: (context) {
+                return AppMenuBar(
+                  onTap: (index) {
+                    statefulNavigationShell.goBranch(index);
+                  },
+                  onDrawerTap: () {
+                    Scaffold.of(context).openEndDrawer();
+                  },
+                );
+              }),
               const SizedBox(height: 20),
               Expanded(
                 child: Row(
                   children: [
-                    const UserInfoWidget(),
+                    !DeviceType.isMobile(context)
+                        ? const UserInfoWidget()
+                        : const SizedBox.shrink(),
                     Expanded(child: statefulNavigationShell),
                   ],
                 ),
               ),
             ],
           ),
-          // child: Column(
-          //   children: [
-          //     const AppMenuBar(),
-          //     const SizedBox(height: 20),
-          //     // Row(
-          //     //   children: [
-          //     //     const UserInfoWidget(),
-          //     //     Expanded(
-          //     //       child: Container(
-          //     //         color: Colors.red,
-          //     //         child: statefulNavigationShell,
-          //     //       ),
-          //     //     ),
-          //     //   ],
-          //     // ),
-          //   ],
-          // ),
         ),
       ),
     );
