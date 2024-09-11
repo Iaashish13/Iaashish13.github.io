@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:my_website/app/widgets/widget.dart';
+
 import 'package:my_website/constants/assets.gen.dart';
 import 'package:my_website/features/home/presentation/widget/widget.dart';
 
-class UserInfoWidget extends StatelessWidget {
+class UserInfoWidget extends StatefulWidget {
   const UserInfoWidget({super.key});
 
+  @override
+  State<UserInfoWidget> createState() => _UserInfoWidgetState();
+}
+
+class _UserInfoWidgetState extends State<UserInfoWidget> {
+  
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

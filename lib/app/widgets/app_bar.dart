@@ -1,7 +1,11 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:my_website/core/responsive/device_type.dart';
 import 'package:my_website/core/theme/cubit/theme_cubit_cubit.dart';
+import 'package:my_website/features/home/presentation/root_page.dart';
 
 // ignore: slash_for_doc_comments
 /**
@@ -11,9 +15,26 @@ import 'package:my_website/core/theme/cubit/theme_cubit_cubit.dart';
  * navigation links. Navigation links collapse into
  * a hamburger menu on screens smaller than 400px.
  */
-class AppMenuBar extends StatelessWidget {
-  const AppMenuBar({super.key});
+class AppMenuBar extends StatefulWidget {
+  final void Function(int index)? onTap;
 
+  const AppMenuBar({
+    Key? key,
+    this.onTap,
+  }) : super(key: key);
+
+  @override
+  State<AppMenuBar> createState() => _AppMenuBarState();
+}
+
+class _AppMenuBarState extends State<AppMenuBar> {
+  final _tabList = [
+    'Home',
+    'Posts',
+    'Categories',
+    'About',
+  ];
+  final _selectionNotifier = ValueNotifier<int>(0);
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -52,31 +73,40 @@ class AppMenuBar extends StatelessWidget {
                   child: Wrap(
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Home",
-                          style: theme.textTheme.bodyLarge,
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Posts",
-                          style: theme.textTheme.bodyLarge,
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Categories",
-                          style: theme.textTheme.bodyLarge,
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text("About", style: theme.textTheme.bodyLarge),
-                      ),
+                      ..._tabList
+                          .mapIndexed((index, e) => ValueListenableBuilder<int>(
+                              valueListenable: _selectionNotifier,
+                              builder: (context, value, child) {
+                                return Column(
+                                  children: [
+                                    TextButton(
+                                      onPressed: () {
+                                        widget.onTap!(index);
+                                        _selectionNotifier.value = index;
+                                      },
+                                      child: Text(
+                                        e,
+                                        style: theme.textTheme.bodyLarge
+                                            ?.copyWith(
+                                                height: 1.5,
+                                                decoration: value == index
+                                                    ? TextDecoration.underline
+                                                    : TextDecoration.none,
+                                                decorationThickness: 1,
+                                                color: Colors.transparent,
+                                                shadows: [
+                                              Shadow(
+                                                  color: theme.brightness ==
+                                                          Brightness.light
+                                                      ? Colors.black
+                                                      : Colors.white,
+                                                  offset: const Offset(0, -5))
+                                            ]),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              })),
                       BlocBuilder<ChangeThemeCubit, bool>(
                         builder: (context, state) {
                           return IconButton(
