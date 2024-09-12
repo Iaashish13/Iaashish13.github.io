@@ -2,10 +2,10 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_website/constants/constants.dart';
 
 import 'package:my_website/core/responsive/device_type.dart';
 import 'package:my_website/core/theme/cubit/theme_cubit_cubit.dart';
-import 'package:my_website/features/home/presentation/root_page.dart';
 
 // ignore: slash_for_doc_comments
 /**
@@ -15,27 +15,17 @@ import 'package:my_website/features/home/presentation/root_page.dart';
  * navigation links. Navigation links collapse into
  * a hamburger menu on screens smaller than 400px.
  */
-class AppMenuBar extends StatefulWidget {
+class AppMenuBar extends StatelessWidget {
+  final int tabIndex;
   final void Function(int index)? onTap;
   final void Function()? onDrawerTap;
 
   const AppMenuBar({
-    Key? key,
+    super.key,
+    required this.tabIndex,
     this.onTap,
     this.onDrawerTap,
-  }) : super(key: key);
-
-  @override
-  State<AppMenuBar> createState() => _AppMenuBarState();
-}
-
-class _AppMenuBarState extends State<AppMenuBar> {
-  final _tabList = [
-    'Home',
-    'Posts',
-    'Categories',
-    'About',
-  ];
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +57,7 @@ class _AppMenuBarState extends State<AppMenuBar> {
                       Icons.menu,
                       size: 28,
                     ),
-                    onPressed: widget.onDrawerTap,
+                    onPressed: onDrawerTap,
                   ),
                 )
               ] else
@@ -75,34 +65,34 @@ class _AppMenuBarState extends State<AppMenuBar> {
                   child: Wrap(
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
-                      ..._tabList.mapIndexed((index, e) => Column(
-                            children: [
-                              TextButton(
-                                onPressed: () {
-                                  widget.onTap!(index);
-                                },
-                                child: Text(
-                                  e,
-                                  style: theme.textTheme.bodyLarge?.copyWith(
-                                      //     height: 1.5,
-                                      //     decoration: value == index
-                                      //         ? TextDecoration.underline
-                                      //         : TextDecoration.none,
-                                      //     decorationThickness: 1,
-                                      //     color: Colors.transparent,
-                                      //     shadows: [
-                                      //   Shadow(
-                                      //       color: theme.brightness ==
-                                      //               Brightness.light
-                                      //           ? Colors.black
-                                      //           : Colors.white,
-                                      //       offset: const Offset(0, -5))
-                                      // ],
-                                      ),
+                      ...titles.mapIndexed((index, e) => StreamBuilder<Object>(
+                          stream: null,
+                          builder: (context, snapshot) {
+                            return TextButton(
+                              onPressed: () {
+                                onTap!(index);
+                              },
+                              child: Text(
+                                e,
+                                style: theme.textTheme.bodyLarge?.copyWith(
+                                  height: 1.5,
+                                  decoration: tabIndex == index
+                                      ? TextDecoration.underline
+                                      : TextDecoration.none,
+                                  decorationThickness: 1,
+                                  color: Colors.transparent,
+                                  shadows: [
+                                    Shadow(
+                                        color:
+                                            theme.brightness == Brightness.light
+                                                ? Colors.black
+                                                : Colors.white,
+                                        offset: const Offset(0, -5))
+                                  ],
                                 ),
                               ),
-                            ],
-                          )),
+                            );
+                          })),
                       BlocBuilder<ChangeThemeCubit, bool>(
                         builder: (context, state) {
                           return IconButton(

@@ -10,6 +10,7 @@ import 'package:my_website/features/home/presentation/root_page.dart';
 
 class DrawerWidget extends StatelessWidget {
   final void Function(int index)? onTap;
+
   const DrawerWidget({
     Key? key,
     this.onTap,
@@ -24,6 +25,7 @@ class DrawerWidget extends StatelessWidget {
                 (index, e) => Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: ListTile(
+
                     dense: true,
                     contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                     minLeadingWidth: 20,

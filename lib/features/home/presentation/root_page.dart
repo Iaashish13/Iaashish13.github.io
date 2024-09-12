@@ -11,7 +11,7 @@ import 'package:my_website/features/home/presentation/widget/user_info_widget.da
 import 'package:my_website/responsive_widgets/drawer_widget.dart';
 import 'package:my_website/services/responsive/responsive_device.dart';
 
-class RootPage extends StatelessWidget {
+class RootPage extends StatefulWidget {
   final StatefulNavigationShell statefulNavigationShell;
   const RootPage({
     Key? key,
@@ -19,12 +19,21 @@ class RootPage extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<RootPage> createState() => _RootPageState();
+}
+
+class _RootPageState extends State<RootPage> {
+  final _selectedIndexNotifier = ValueNotifier<int>(0);
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
       endDrawer: DeviceType.isMobile(context)
           ? DrawerWidget(
-              onTap: (index) => statefulNavigationShell.goBranch(index),
+              onTap: (index) {
+                _selectedIndexNotifier.value = index;
+                widget.statefulNavigationShell.goBranch(index);
+              },
             )
           : null,
       body: SafeArea(
@@ -32,14 +41,20 @@ class RootPage extends StatelessWidget {
           child: Column(
             children: [
               Builder(builder: (context) {
-                return AppMenuBar(
-                  onTap: (index) {
-                    statefulNavigationShell.goBranch(index);
-                  },
-                  onDrawerTap: () {
-                    Scaffold.of(context).openEndDrawer();
-                  },
-                );
+                return ValueListenableBuilder<int>(
+                    valueListenable: _selectedIndexNotifier,
+                    builder: (context, index, child) {
+                      return AppMenuBar(
+                        tabIndex: index,
+                        onTap: (index) {
+                          _selectedIndexNotifier.value = index;
+                          widget.statefulNavigationShell.goBranch(index);
+                        },
+                        onDrawerTap: () {
+                          Scaffold.of(context).openEndDrawer();
+                        },
+                      );
+                    });
               }),
               const SizedBox(height: 20),
               Expanded(
@@ -48,10 +63,23 @@ class RootPage extends StatelessWidget {
                     !DeviceType.isMobile(context)
                         ? const UserInfoWidget()
                         : const SizedBox.shrink(),
-                    Expanded(child: statefulNavigationShell),
+                    Expanded(child: widget.statefulNavigationShell),
                   ],
                 ),
               ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Made in 💙 with'),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    FlutterLogo(),
+                  ],
+                ),
+              )
             ],
           ),
         ),
