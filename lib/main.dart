@@ -1,13 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_website/core/route/route.dart';
 import 'package:my_website/core/theme/cubit/theme_cubit_cubit.dart';
 import 'package:my_website/core/theme/dark_theme.dart';
 import 'package:my_website/core/theme/light_theme.dart';
+import 'package:my_website/firebase_options.dart';
 import 'package:my_website/injector.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await setupLocator();
 
   runApp(
