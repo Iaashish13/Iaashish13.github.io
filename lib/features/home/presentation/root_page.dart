@@ -1,7 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:my_website/app/widgets/app_bar.dart';
@@ -9,14 +7,13 @@ import 'package:my_website/app/widgets/responsive_padding.dart';
 import 'package:my_website/core/responsive/device_type.dart';
 import 'package:my_website/features/home/presentation/widget/user_info_widget.dart';
 import 'package:my_website/responsive_widgets/drawer_widget.dart';
-import 'package:my_website/services/responsive/responsive_device.dart';
 
 class RootPage extends StatefulWidget {
   final StatefulNavigationShell statefulNavigationShell;
   const RootPage({
-    Key? key,
+    super.key,
     required this.statefulNavigationShell,
-  }) : super(key: key);
+  });
 
   @override
   State<RootPage> createState() => _RootPageState();
@@ -67,7 +64,7 @@ class _RootPageState extends State<RootPage> {
                   ],
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(bottom: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

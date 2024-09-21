@@ -4,7 +4,7 @@ import 'package:my_website/constants/constants.dart';
 import 'package:my_website/core/theme/cubit/theme_cubit_cubit.dart';
 
 class TitleWidget extends StatelessWidget {
-  const TitleWidget({Key? key}) : super(key: key);
+  const TitleWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -8,7 +8,7 @@ class ChangeThemeCubit extends Cubit<bool> {
 
   void getTheme() async {
     bool? isTheme =
-        locator<SharedPreferences>().getBool(StringConstants.themeConst);
+        getIt<SharedPreferences>().getBool(StringConstants.themeConst);
     if (isTheme == true) {
       emit(true);
     } else if (isTheme == false) {
@@ -19,7 +19,7 @@ class ChangeThemeCubit extends Cubit<bool> {
   }
 
   Future<void> switchTheme({required bool isDark}) async {
-    locator<SharedPreferences>().setBool(StringConstants.themeConst, isDark);
+    getIt<SharedPreferences>().setBool(StringConstants.themeConst, isDark);
 
     emit(isDark);
   }

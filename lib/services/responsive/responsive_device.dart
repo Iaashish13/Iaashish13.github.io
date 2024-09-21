@@ -9,12 +9,11 @@ class ResponsiveDevice extends StatelessWidget {
   final bool bothareSame;
   final Widget? sameWidget;
   const ResponsiveDevice(
-      {Key? key,
+      {super.key,
       required this.mobileUi,
       required this.desktopUI,
       this.sameWidget,
-      this.bothareSame = false})
-      : super(key: key);
+      this.bothareSame = false});
   static bool isMobile(BuildContext context) =>
       MediaQuery.of(context).size.width < 600;
   @override

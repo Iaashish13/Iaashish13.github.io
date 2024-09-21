@@ -10,12 +10,12 @@ class UserSocialWidget extends StatelessWidget {
   final void Function()? onTap;
   final bool? toChangeSvgColor;
   const UserSocialWidget({
-    Key? key,
+    super.key,
     this.assetName,
     required this.socialName,
     this.onTap,
     this.toChangeSvgColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

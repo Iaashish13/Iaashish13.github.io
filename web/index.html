@@ -32,32 +32,6 @@
   <title>aashishregmi_com_np</title>
   <link rel="manifest" href="manifest.json">
 </head>
-<body>
-  <script>
-    window.flutterfire_ignore_scripts = ['analytics', 'firestore'];
-  </script>
-
-  <script>
-    window.addEventListener('load', async function (ev) {
-      // Check if Firestore is not in the ignore list before importing
-      if (!window.flutterfire_ignore_scripts.includes('firestore')) {
-        print("hello ")
-        window.firebase_firestore = await import("https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js");
-      }
-
-      // Check if Analytics is not in the ignore list before importing
-      if (!window.flutterfire_ignore_scripts.includes('analytics')) {
-        window.firebase_analytics = await import("https://www.gstatic.com/firebasejs/10.13.1/firebase-analytics.js");
-      }
-
-      // Initialize the Flutter app
-      _flutter.loader.loadEntrypoint().then(function (engineInitializer) {
-        return engineInitializer.initializeEngine().then(function (appRunner) {
-          appRunner.runApp();
-        });
-      });
-    });
-  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

@@ -6,9 +6,9 @@ import 'package:my_website/core/responsive/device_type.dart';
 class ResponsivePadding extends StatelessWidget {
   final Widget child;
   const ResponsivePadding({
-    Key? key,
+    super.key,
     required this.child,
-  }) : super(key: key);
+  });
 
   double _getResponsivePadding(BuildContext context) {
     if (DeviceType.isDesktop(context)) {

@@ -28,7 +28,7 @@ final router = GoRouter(
             GoRoute(
               path: homeRoute,
               name: homeRoute,
-              builder: (context, state) => const HomeScreen(),
+              builder: (context, state) => const HomeScreenProvider(),
             ),
           ],
         ),
@@ -56,3 +56,8 @@ final router = GoRouter(
     ),
   ],
 );
+
+class MultipleScreenRoute extends GoRoute{
+  MultipleScreenRoute({required super.path});
+ 
+}

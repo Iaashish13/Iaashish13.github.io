@@ -6,15 +6,14 @@ import 'package:go_router/go_router.dart';
 
 import 'package:my_website/constants/constants.dart';
 import 'package:my_website/core/theme/cubit/theme_cubit_cubit.dart';
-import 'package:my_website/features/home/presentation/root_page.dart';
 
 class DrawerWidget extends StatelessWidget {
   final void Function(int index)? onTap;
 
   const DrawerWidget({
-    Key? key,
+    super.key,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
