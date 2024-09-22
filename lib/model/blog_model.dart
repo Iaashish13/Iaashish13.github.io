@@ -6,6 +6,7 @@ part 'blog_model.g.dart';
 @freezed
 class BlogModel with _$BlogModel {
   const factory BlogModel({
+    required int id,
     String? title,
     String? content,
     int? categoryId,

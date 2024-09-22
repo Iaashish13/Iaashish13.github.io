@@ -64,19 +64,7 @@ class _RootPageState extends State<RootPage> {
                   ],
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(bottom: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Made in 💙 with'),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    FlutterLogo(),
-                  ],
-                ),
-              )
+             
             ],
           ),
         ),

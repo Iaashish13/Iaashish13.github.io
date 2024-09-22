@@ -11,7 +11,6 @@ class UserInfoWidget extends StatefulWidget {
 }
 
 class _UserInfoWidgetState extends State<UserInfoWidget> {
-  
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -58,6 +57,19 @@ class _UserInfoWidgetState extends State<UserInfoWidget> {
           assetName: Assets.svgs.twitterIcon,
           socialName: 'Twitter',
         ),
+        const SizedBox(
+          height: 30,
+        ),
+        const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Made in 💙 with'),
+            SizedBox(
+              width: 5,
+            ),
+            FlutterLogo(),
+          ],
+        )
       ],
     );
   }

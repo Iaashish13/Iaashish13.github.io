@@ -6,11 +6,24 @@ import 'package:my_website/features/categories/categories_screen.dart';
 import 'package:my_website/features/home/presentation/home_screen.dart';
 import 'package:my_website/features/home/presentation/root_page.dart';
 import 'package:my_website/features/posts/post_screen.dart';
+import 'package:my_website/screens/blog_screen.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'root');
 final GlobalKey<NavigatorState> _sectionANavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'sectionANav');
+
+MultipleScreenRoute get _blogScreenRoute => MultipleScreenRoute(
+    path: blogRoute,
+    name: blogRoute,
+    builder: (context, state) {
+      final data = state.extra as Map<String, dynamic>;
+      final content = data['content'] as String?;
+      return BlogScreen(
+        content: content,
+      );
+    });
+
 // GoRouter configuration
 final router = GoRouter(
   debugLogDiagnostics: true,
@@ -26,10 +39,10 @@ final router = GoRouter(
           navigatorKey: _sectionANavigatorKey,
           routes: [
             GoRoute(
-              path: homeRoute,
-              name: homeRoute,
-              builder: (context, state) => const HomeScreenProvider(),
-            ),
+                path: homeRoute,
+                name: homeRoute,
+                builder: (context, state) => const HomeScreenProvider(),
+                routes: [_blogScreenRoute]),
           ],
         ),
         StatefulShellBranch(routes: [
@@ -57,7 +70,6 @@ final router = GoRouter(
   ],
 );
 
-class MultipleScreenRoute extends GoRoute{
-  MultipleScreenRoute({required super.path});
- 
+class MultipleScreenRoute extends GoRoute {
+  MultipleScreenRoute({required super.path, super.builder, super.name});
 }

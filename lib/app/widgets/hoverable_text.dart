@@ -2,13 +2,18 @@
 import 'package:flutter/material.dart';
 
 class HoverTextWithUnderlineWidget extends StatefulWidget {
+  final bool? toShowUnderLineOnHover;
+  final bool? toIncreasFontSizeAndWeight;
   final String hoverText;
   final void Function()? onTap;
+
   const HoverTextWithUnderlineWidget({
-    super.key,
+    Key? key,
+    this.toShowUnderLineOnHover = true,
     required this.hoverText,
     this.onTap,
-  });
+    this.toIncreasFontSizeAndWeight = false,
+  }) : super(key: key);
 
   @override
   State<HoverTextWithUnderlineWidget> createState() =>
@@ -31,10 +36,16 @@ class _HoverTextWithUnderlineWidgetState
           builder: (context, isHovered, child) {
             return Text(
               widget.hoverText,
-              style: theme.textTheme.bodySmall?.copyWith(
-                  decoration: isHovered
-                      ? TextDecoration.underline
-                      : TextDecoration.none),
+              style: widget.toIncreasFontSizeAndWeight == true
+                  ? theme.textTheme.displayMedium?.copyWith(
+                      decoration: TextDecoration.underline,
+                      fontWeight:
+                          isHovered ? FontWeight.bold : FontWeight.normal,
+                    )
+                  : theme.textTheme.bodySmall?.copyWith(
+                      decoration: isHovered
+                          ? TextDecoration.underline
+                          : TextDecoration.none),
             );
           },
         ),

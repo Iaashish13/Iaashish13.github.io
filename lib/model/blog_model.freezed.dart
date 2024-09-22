@@ -20,6 +20,7 @@ BlogModel _$BlogModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BlogModel {
+  int get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get content => throw _privateConstructorUsedError;
   int? get categoryId => throw _privateConstructorUsedError;
@@ -45,7 +46,8 @@ abstract class $BlogModelCopyWith<$Res> {
       _$BlogModelCopyWithImpl<$Res, BlogModel>;
   @useResult
   $Res call(
-      {String? title,
+      {int id,
+      String? title,
       String? content,
       int? categoryId,
       int? subcategoryId,
@@ -68,6 +70,7 @@ class _$BlogModelCopyWithImpl<$Res, $Val extends BlogModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = freezed,
     Object? content = freezed,
     Object? categoryId = freezed,
@@ -76,6 +79,10 @@ class _$BlogModelCopyWithImpl<$Res, $Val extends BlogModel>
     Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -113,7 +120,8 @@ abstract class _$$BlogModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? title,
+      {int id,
+      String? title,
       String? content,
       int? categoryId,
       int? subcategoryId,
@@ -134,6 +142,7 @@ class __$$BlogModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = freezed,
     Object? content = freezed,
     Object? categoryId = freezed,
@@ -142,6 +151,10 @@ class __$$BlogModelImplCopyWithImpl<$Res>
     Object? updatedAt = freezed,
   }) {
     return _then(_$BlogModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -174,7 +187,8 @@ class __$$BlogModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$BlogModelImpl implements _BlogModel {
   const _$BlogModelImpl(
-      {this.title,
+      {required this.id,
+      this.title,
       this.content,
       this.categoryId,
       this.subcategoryId,
@@ -184,6 +198,8 @@ class _$BlogModelImpl implements _BlogModel {
   factory _$BlogModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$BlogModelImplFromJson(json);
 
+  @override
+  final int id;
   @override
   final String? title;
   @override
@@ -201,7 +217,7 @@ class _$BlogModelImpl implements _BlogModel {
 
   @override
   String toString() {
-    return 'BlogModel(title: $title, content: $content, categoryId: $categoryId, subcategoryId: $subcategoryId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'BlogModel(id: $id, title: $title, content: $content, categoryId: $categoryId, subcategoryId: $subcategoryId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -209,6 +225,7 @@ class _$BlogModelImpl implements _BlogModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BlogModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.categoryId, categoryId) ||
@@ -223,7 +240,7 @@ class _$BlogModelImpl implements _BlogModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, title, content, categoryId,
+  int get hashCode => Object.hash(runtimeType, id, title, content, categoryId,
       subcategoryId, createdAt, updatedAt);
 
   /// Create a copy of BlogModel
@@ -244,7 +261,8 @@ class _$BlogModelImpl implements _BlogModel {
 
 abstract class _BlogModel implements BlogModel {
   const factory _BlogModel(
-      {final String? title,
+      {required final int id,
+      final String? title,
       final String? content,
       final int? categoryId,
       final int? subcategoryId,
@@ -254,6 +272,8 @@ abstract class _BlogModel implements BlogModel {
   factory _BlogModel.fromJson(Map<String, dynamic> json) =
       _$BlogModelImpl.fromJson;
 
+  @override
+  int get id;
   @override
   String? get title;
   @override

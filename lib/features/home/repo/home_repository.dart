@@ -16,8 +16,8 @@ class HomeRepositoryImpl implements HomeRepository {
   Future<List<BlogModel>> fetchRecentBlogs() async {
     final querySnapshot = await firebaseFirestore
         .collection('blogs')
-        .orderBy('createdAt')
-        .limit(6)
+        
+     
         .get();
     return querySnapshot.docs
         .map((doc) => BlogModel.fromJson(doc.data()))
