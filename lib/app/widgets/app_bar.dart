@@ -65,34 +65,30 @@ class AppMenuBar extends StatelessWidget {
                   child: Wrap(
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
-                      ...titles.mapIndexed((index, e) => StreamBuilder<Object>(
-                          stream: null,
-                          builder: (context, snapshot) {
-                            return TextButton(
-                              onPressed: () {
-                                onTap!(index);
-                              },
-                              child: Text(
-                                e,
-                                style: theme.textTheme.bodyLarge?.copyWith(
-                                  height: 1.5,
-                                  decoration: tabIndex == index
-                                      ? TextDecoration.underline
-                                      : TextDecoration.none,
-                                  decorationThickness: 1,
-                                  color: Colors.transparent,
-                                  shadows: [
-                                    Shadow(
-                                        color:
-                                            theme.brightness == Brightness.light
-                                                ? Colors.black
-                                                : Colors.white,
-                                        offset: const Offset(0, -5))
-                                  ],
-                                ),
+                      ...titles.mapIndexed((index, e) => TextButton(
+                            onPressed: () {
+                              onTap!(index);
+                            },
+                            child: Text(
+                              e,
+                              style: theme.textTheme.bodyLarge?.copyWith(
+                                height: 1.5,
+                                decoration: tabIndex == index
+                                    ? TextDecoration.underline
+                                    : TextDecoration.none,
+                                decorationThickness: 1,
+                                color: Colors.transparent,
+                                shadows: [
+                                  Shadow(
+                                      color:
+                                          theme.brightness == Brightness.light
+                                              ? Colors.black
+                                              : Colors.white,
+                                      offset: const Offset(0, -5))
+                                ],
                               ),
-                            );
-                          })),
+                            ),
+                          )),
                       BlocBuilder<ChangeThemeCubit, bool>(
                         builder: (context, state) {
                           return IconButton(

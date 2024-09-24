@@ -8,10 +8,10 @@ import 'package:my_website/features/home/presentation/root_page.dart';
 import 'package:my_website/features/posts/post_screen.dart';
 import 'package:my_website/screens/blog_screen.dart';
 
-final GlobalKey<NavigatorState> _rootNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'root');
-final GlobalKey<NavigatorState> _sectionANavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'sectionANav');
+// final GlobalKey<NavigatorState> _rootNavigatorKey =
+//     GlobalKey<NavigatorState>(debugLabel: 'root');
+// final GlobalKey<NavigatorState> _sectionANavigatorKey =
+//     GlobalKey<NavigatorState>(debugLabel: 'sectionANav');
 
 MultipleScreenRoute get _blogScreenRoute => MultipleScreenRoute(
     path: blogRoute,
@@ -27,8 +27,12 @@ MultipleScreenRoute get _blogScreenRoute => MultipleScreenRoute(
 // GoRouter configuration
 final router = GoRouter(
   debugLogDiagnostics: true,
-  navigatorKey: _rootNavigatorKey,
+  // navigatorKey: _rootNavigatorKey,
   initialLocation: homeRoute,
+  redirect: (context, state) {
+    print(state.fullPath);
+    return null;
+  },
   routes: [
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) => RootPage(
@@ -36,33 +40,36 @@ final router = GoRouter(
       ),
       branches: [
         StatefulShellBranch(
-          navigatorKey: _sectionANavigatorKey,
+          // navigatorKey: _sectionANavigatorKey,
           routes: [
             GoRoute(
-                path: homeRoute,
-                name: homeRoute,
-                builder: (context, state) => const HomeScreenProvider(),
-                routes: [_blogScreenRoute]),
+              path: homeRoute,
+              // name: homeRoute,
+              builder: (context, state) => const HomeScreenProvider(),
+              routes: [
+                _blogScreenRoute
+              ]
+            ),
           ],
         ),
         StatefulShellBranch(routes: [
           GoRoute(
             path: postRoute,
-            name: postRoute,
+            // name: postRoute,
             builder: (context, state) => const PostScreen(),
           )
         ]),
         StatefulShellBranch(routes: [
           GoRoute(
             path: categoriesRoute,
-            name: categoriesRoute,
+            // name: categoriesRoute,
             builder: (context, state) => const CategoriesScreen(),
           ),
         ]),
         StatefulShellBranch(routes: [
           GoRoute(
               path: aboutRoute,
-              name: aboutRoute,
+              // name: aboutRoute,
               builder: (context, state) => const AboutScreen()),
         ]),
       ],

@@ -10,19 +10,19 @@ part 'fetch_recent_blogs_cubit.freezed.dart';
 part 'fetch_recent_blogs_state.dart';
 
 class FetchRecentBlogsCubit extends Cubit<FetchRecentBlogsState> {
-  final HomeService homeService;
+
   FetchRecentBlogsCubit(
-    this.homeService,
+  
   ) : super(const FetchRecentBlogsState.initial());
 
   Future<void> fetchRecentBlogs() async {
     emit(const FetchRecentBlogsState.loading());
-    final response = await homeService.fetchRecentBlogs();
-    response.fold(
-      (l) => emit(FetchRecentBlogsState.failed(failure: l)),
-      (r) => emit(
-        FetchRecentBlogsState.loaded(blogs: r.isNotEmpty ? r : []),
-      ),
-    );
+    // final response = await homeService.fetchRecentBlogs();
+    // response.fold(
+    //   (l) => emit(FetchRecentBlogsState.failed(failure: l)),
+    //   (r) => emit(
+    //     FetchRecentBlogsState.loaded(blogs: r.isNotEmpty ? r : []),
+    //   ),
+    // );
   }
 }

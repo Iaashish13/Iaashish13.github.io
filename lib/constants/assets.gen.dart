@@ -7,6 +7,16 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
+class $AssetsBlogsGen {
+  const $AssetsBlogsGen();
+
+  /// File path: assets/blogs/test.md
+  String get test => 'assets/blogs/test.md';
+
+  /// List of all assets
+  List<String> get values => [test];
+}
+
 class $AssetsSvgsGen {
   const $AssetsSvgsGen();
 
@@ -26,5 +36,6 @@ class $AssetsSvgsGen {
 class Assets {
   Assets._();
 
+  static const $AssetsBlogsGen blogs = $AssetsBlogsGen();
   static const $AssetsSvgsGen svgs = $AssetsSvgsGen();
 }

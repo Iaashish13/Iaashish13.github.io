@@ -18,8 +18,10 @@ class _UserInfoWidgetState extends State<UserInfoWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const CircleAvatar(
-          backgroundColor: Colors.red,
           radius: 60,
+          child: FlutterLogo(
+            size: 80,
+          ),
         ),
         const SizedBox(
           height: 10,
@@ -60,16 +62,16 @@ class _UserInfoWidgetState extends State<UserInfoWidget> {
         const SizedBox(
           height: 30,
         ),
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Made in 💙 with'),
-            SizedBox(
-              width: 5,
-            ),
-            FlutterLogo(),
-          ],
-        )
+        // const Row(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: [
+        //     Text('Made in 💙 with'),
+        //     SizedBox(
+        //       width: 5,
+        //     ),
+        //     FlutterLogo(),
+        //   ],
+        // )
       ],
     );
   }

@@ -44,5 +44,9 @@ final lightTheme = FlexThemeData.light(
       fontWeight: FontWeight.w400,
       fontSize: 16,
     ),
+    labelSmall: TextStyle(
+      fontWeight: FontWeight.w400,
+      fontSize: 10,
+    ),
   ),
 );

@@ -25,9 +25,8 @@ mixin _$BlogModel {
   String? get content => throw _privateConstructorUsedError;
   int? get categoryId => throw _privateConstructorUsedError;
   int? get subcategoryId => throw _privateConstructorUsedError;
-  @TimestampConverter()
+  String? get shortDescription => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
-  @TimestampConverter()
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this BlogModel to a JSON map.
@@ -51,8 +50,9 @@ abstract class $BlogModelCopyWith<$Res> {
       String? content,
       int? categoryId,
       int? subcategoryId,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt});
+      String? shortDescription,
+      DateTime? createdAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -75,6 +75,7 @@ class _$BlogModelCopyWithImpl<$Res, $Val extends BlogModel>
     Object? content = freezed,
     Object? categoryId = freezed,
     Object? subcategoryId = freezed,
+    Object? shortDescription = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -99,6 +100,10 @@ class _$BlogModelCopyWithImpl<$Res, $Val extends BlogModel>
           ? _value.subcategoryId
           : subcategoryId // ignore: cast_nullable_to_non_nullable
               as int?,
+      shortDescription: freezed == shortDescription
+          ? _value.shortDescription
+          : shortDescription // ignore: cast_nullable_to_non_nullable
+              as String?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -125,8 +130,9 @@ abstract class _$$BlogModelImplCopyWith<$Res>
       String? content,
       int? categoryId,
       int? subcategoryId,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt});
+      String? shortDescription,
+      DateTime? createdAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -147,6 +153,7 @@ class __$$BlogModelImplCopyWithImpl<$Res>
     Object? content = freezed,
     Object? categoryId = freezed,
     Object? subcategoryId = freezed,
+    Object? shortDescription = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -171,6 +178,10 @@ class __$$BlogModelImplCopyWithImpl<$Res>
           ? _value.subcategoryId
           : subcategoryId // ignore: cast_nullable_to_non_nullable
               as int?,
+      shortDescription: freezed == shortDescription
+          ? _value.shortDescription
+          : shortDescription // ignore: cast_nullable_to_non_nullable
+              as String?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -192,8 +203,9 @@ class _$BlogModelImpl implements _BlogModel {
       this.content,
       this.categoryId,
       this.subcategoryId,
-      @TimestampConverter() this.createdAt,
-      @TimestampConverter() this.updatedAt});
+      this.shortDescription,
+      this.createdAt,
+      this.updatedAt});
 
   factory _$BlogModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$BlogModelImplFromJson(json);
@@ -209,15 +221,15 @@ class _$BlogModelImpl implements _BlogModel {
   @override
   final int? subcategoryId;
   @override
-  @TimestampConverter()
+  final String? shortDescription;
+  @override
   final DateTime? createdAt;
   @override
-  @TimestampConverter()
   final DateTime? updatedAt;
 
   @override
   String toString() {
-    return 'BlogModel(id: $id, title: $title, content: $content, categoryId: $categoryId, subcategoryId: $subcategoryId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'BlogModel(id: $id, title: $title, content: $content, categoryId: $categoryId, subcategoryId: $subcategoryId, shortDescription: $shortDescription, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -232,6 +244,8 @@ class _$BlogModelImpl implements _BlogModel {
                 other.categoryId == categoryId) &&
             (identical(other.subcategoryId, subcategoryId) ||
                 other.subcategoryId == subcategoryId) &&
+            (identical(other.shortDescription, shortDescription) ||
+                other.shortDescription == shortDescription) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -241,7 +255,7 @@ class _$BlogModelImpl implements _BlogModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, title, content, categoryId,
-      subcategoryId, createdAt, updatedAt);
+      subcategoryId, shortDescription, createdAt, updatedAt);
 
   /// Create a copy of BlogModel
   /// with the given fields replaced by the non-null parameter values.
@@ -266,8 +280,9 @@ abstract class _BlogModel implements BlogModel {
       final String? content,
       final int? categoryId,
       final int? subcategoryId,
-      @TimestampConverter() final DateTime? createdAt,
-      @TimestampConverter() final DateTime? updatedAt}) = _$BlogModelImpl;
+      final String? shortDescription,
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$BlogModelImpl;
 
   factory _BlogModel.fromJson(Map<String, dynamic> json) =
       _$BlogModelImpl.fromJson;
@@ -283,10 +298,10 @@ abstract class _BlogModel implements BlogModel {
   @override
   int? get subcategoryId;
   @override
-  @TimestampConverter()
+  String? get shortDescription;
+  @override
   DateTime? get createdAt;
   @override
-  @TimestampConverter()
   DateTime? get updatedAt;
 
   /// Create a copy of BlogModel

@@ -38,6 +38,9 @@ class _HoverTextWithUnderlineWidgetState
               widget.hoverText,
               style: widget.toIncreasFontSizeAndWeight == true
                   ? theme.textTheme.displayMedium?.copyWith(
+                      decorationColor:
+                          isHovered ? Colors.lightBlueAccent : null,
+                      color: isHovered ? Colors.lightBlueAccent : null,
                       decoration: TextDecoration.underline,
                       fontWeight:
                           isHovered ? FontWeight.bold : FontWeight.normal,
