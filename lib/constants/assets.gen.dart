@@ -13,8 +13,11 @@ class $AssetsBlogsGen {
   /// File path: assets/blogs/test.md
   String get test => 'assets/blogs/test.md';
 
+  /// File path: assets/blogs/work_manager_flutter.md
+  String get workManagerFlutter => 'assets/blogs/work_manager_flutter.md';
+
   /// List of all assets
-  List<String> get values => [test];
+  List<String> get values => [test, workManagerFlutter];
 }
 
 class $AssetsSvgsGen {

@@ -28,6 +28,7 @@ mixin _$BlogModel {
   String? get shortDescription => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
+  String? get path => throw _privateConstructorUsedError;
 
   /// Serializes this BlogModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,7 +53,8 @@ abstract class $BlogModelCopyWith<$Res> {
       int? subcategoryId,
       String? shortDescription,
       DateTime? createdAt,
-      DateTime? updatedAt});
+      DateTime? updatedAt,
+      String? path});
 }
 
 /// @nodoc
@@ -78,6 +80,7 @@ class _$BlogModelCopyWithImpl<$Res, $Val extends BlogModel>
     Object? shortDescription = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? path = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -112,6 +115,10 @@ class _$BlogModelCopyWithImpl<$Res, $Val extends BlogModel>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      path: freezed == path
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -132,7 +139,8 @@ abstract class _$$BlogModelImplCopyWith<$Res>
       int? subcategoryId,
       String? shortDescription,
       DateTime? createdAt,
-      DateTime? updatedAt});
+      DateTime? updatedAt,
+      String? path});
 }
 
 /// @nodoc
@@ -156,6 +164,7 @@ class __$$BlogModelImplCopyWithImpl<$Res>
     Object? shortDescription = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? path = freezed,
   }) {
     return _then(_$BlogModelImpl(
       id: null == id
@@ -190,6 +199,10 @@ class __$$BlogModelImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      path: freezed == path
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -205,7 +218,8 @@ class _$BlogModelImpl implements _BlogModel {
       this.subcategoryId,
       this.shortDescription,
       this.createdAt,
-      this.updatedAt});
+      this.updatedAt,
+      this.path});
 
   factory _$BlogModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$BlogModelImplFromJson(json);
@@ -226,10 +240,12 @@ class _$BlogModelImpl implements _BlogModel {
   final DateTime? createdAt;
   @override
   final DateTime? updatedAt;
+  @override
+  final String? path;
 
   @override
   String toString() {
-    return 'BlogModel(id: $id, title: $title, content: $content, categoryId: $categoryId, subcategoryId: $subcategoryId, shortDescription: $shortDescription, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'BlogModel(id: $id, title: $title, content: $content, categoryId: $categoryId, subcategoryId: $subcategoryId, shortDescription: $shortDescription, createdAt: $createdAt, updatedAt: $updatedAt, path: $path)';
   }
 
   @override
@@ -249,13 +265,14 @@ class _$BlogModelImpl implements _BlogModel {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.path, path) || other.path == path));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, title, content, categoryId,
-      subcategoryId, shortDescription, createdAt, updatedAt);
+      subcategoryId, shortDescription, createdAt, updatedAt, path);
 
   /// Create a copy of BlogModel
   /// with the given fields replaced by the non-null parameter values.
@@ -282,7 +299,8 @@ abstract class _BlogModel implements BlogModel {
       final int? subcategoryId,
       final String? shortDescription,
       final DateTime? createdAt,
-      final DateTime? updatedAt}) = _$BlogModelImpl;
+      final DateTime? updatedAt,
+      final String? path}) = _$BlogModelImpl;
 
   factory _BlogModel.fromJson(Map<String, dynamic> json) =
       _$BlogModelImpl.fromJson;
@@ -303,6 +321,8 @@ abstract class _BlogModel implements BlogModel {
   DateTime? get createdAt;
   @override
   DateTime? get updatedAt;
+  @override
+  String? get path;
 
   /// Create a copy of BlogModel
   /// with the given fields replaced by the non-null parameter values.

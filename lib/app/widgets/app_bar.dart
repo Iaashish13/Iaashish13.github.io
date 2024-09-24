@@ -2,9 +2,11 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_website/constants/constants.dart';
 
 import 'package:my_website/core/responsive/device_type.dart';
+import 'package:my_website/core/route/route.dart';
 import 'package:my_website/core/theme/cubit/theme_cubit_cubit.dart';
 
 // ignore: slash_for_doc_comments
@@ -43,7 +45,9 @@ class AppMenuBar extends StatelessWidget {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   splashColor: Colors.transparent,
-                  onTap: () {},
+                  onTap: () {
+                    context.go(homeRoute);
+                  },
                   child: Text("Aashish's Blogs",
                       overflow: TextOverflow.ellipsis,
                       style: theme.textTheme.displayMedium),

@@ -24,7 +24,7 @@ class _UserInfoWidgetState extends State<UserInfoWidget> {
           ),
         ),
         const SizedBox(
-          height: 10,
+          height: 20,
         ),
         Text(
           'Aashish Regmi',

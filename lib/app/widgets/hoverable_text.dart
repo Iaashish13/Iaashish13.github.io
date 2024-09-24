@@ -8,12 +8,12 @@ class HoverTextWithUnderlineWidget extends StatefulWidget {
   final void Function()? onTap;
 
   const HoverTextWithUnderlineWidget({
-    Key? key,
+    super.key,
     this.toShowUnderLineOnHover = true,
     required this.hoverText,
     this.onTap,
     this.toIncreasFontSizeAndWeight = false,
-  }) : super(key: key);
+  });
 
   @override
   State<HoverTextWithUnderlineWidget> createState() =>
@@ -43,7 +43,7 @@ class _HoverTextWithUnderlineWidgetState
                       color: isHovered ? Colors.lightBlueAccent : null,
                       decoration: TextDecoration.underline,
                       fontWeight:
-                          isHovered ? FontWeight.bold : FontWeight.normal,
+                          isHovered ? FontWeight.w600 : FontWeight.normal,
                     )
                   : theme.textTheme.bodySmall?.copyWith(
                       decoration: isHovered

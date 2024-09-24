@@ -13,6 +13,7 @@ class BlogModel with _$BlogModel {
     String? shortDescription,
     DateTime? createdAt,
   DateTime? updatedAt,
+  String? path,
   }) = _BlogModel;
   factory BlogModel.fromJson(Map<String, dynamic> json) =>
       _$BlogModelFromJson(json);

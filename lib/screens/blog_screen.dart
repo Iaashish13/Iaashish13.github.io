@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:markdown_widget/markdown_widget.dart';
 
-import 'package:my_website/app/widgets/responsive_padding.dart';
+import 'package:my_website/app/widgets/widget.dart';
+import 'package:my_website/constants/blogs_constant.dart';
 
 class BlogScreen extends StatefulWidget {
-  final String? content;
+  final int blogId;
   const BlogScreen({
-    Key? key,
-    this.content,
-  }) : super(key: key);
+    super.key,
+    required this.blogId,
+  });
 
   @override
   State<BlogScreen> createState() => _BlogScreenState();
@@ -21,14 +22,16 @@ class _BlogScreenState extends State<BlogScreen> {
 
   @override
   void initState() {
-    _loadBlogAsset();
+    _loadBlogAsset(blogId: widget.blogId);
+
     super.initState();
   }
 
   /// Loads the markdown data from a file in the assets, and updates [blogData]
   /// with the result.
-  void _loadBlogAsset() {
-    rootBundle.loadString('assets/blogs/test.md').then((value) {
+  void _loadBlogAsset({required int blogId}) {
+    final blogPath = bloglist.where((e) => e.id == blogId).first;
+    rootBundle.loadString(blogPath.path ?? '').then((value) {
       setState(() {
         blogData = value;
       });
@@ -37,15 +40,29 @@ class _BlogScreenState extends State<BlogScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
     final config =
         isDark ? MarkdownConfig.darkConfig : MarkdownConfig.defaultConfig;
-    return widget.content != null
-        ? ResponsivePadding(
-            child: MarkdownWidget(
-            data: blogData ?? '',
-            config: config,
-          ))
-        : Text('No content');
+    return ResponsivePadding(
+        child: MarkdownWidget(
+      data: blogData ?? '',
+      config: config.copy(configs: [
+        PreConfig(
+            wrapper: (child, code, language) => CodeWrapperWidget(
+                  child,
+                  code,
+                  language,
+                ),
+            textStyle: theme.textTheme.bodySmall!.copyWith(
+              fontFamily: 'Euclid-Regular',
+            ),
+            decoration: BoxDecoration(
+                color:
+                    isDark ? const Color(0xff2d2d2d) : const Color(0xffeff1f3),
+                borderRadius: const BorderRadius.all(Radius.circular(8.0))))
+      ]),
+    ));
   }
 }
+

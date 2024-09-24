@@ -14,7 +14,7 @@ class ChangeThemeCubit extends Cubit<bool> {
     } else if (isTheme == false) {
       emit(false);
     } else {
-      emit(true);
+      emit(false);
     }
   }
 

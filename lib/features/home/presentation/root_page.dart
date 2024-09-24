@@ -1,16 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
 import 'package:my_website/app/widgets/app_bar.dart';
 import 'package:my_website/app/widgets/responsive_padding.dart';
 import 'package:my_website/core/responsive/device_type.dart';
 import 'package:my_website/core/route/route.dart';
-import 'package:my_website/features/about/presentation/about_screen.dart';
-import 'package:my_website/features/categories/categories_screen.dart';
-import 'package:my_website/features/home/presentation/home_screen.dart';
 import 'package:my_website/features/home/presentation/widget/user_info_widget.dart';
-import 'package:my_website/features/posts/post_screen.dart';
 import 'package:my_website/responsive_widgets/drawer_widget.dart';
 
 class RootPage extends StatefulWidget {
@@ -34,7 +29,7 @@ class _RootPageState extends State<RootPage> {
     router.routeInformationProvider.addListener(() {
       final currentIndex =
           _getTabIndexFromUrl(router.routeInformationProvider.value.uri.path);
-      print("Current Index : $currentIndex");
+
       if (currentIndex != null &&
           _selectedIndexNotifier.value != currentIndex) {
         _selectedIndexNotifier.value = currentIndex;
@@ -53,8 +48,7 @@ class _RootPageState extends State<RootPage> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final size = MediaQuery.sizeOf(context);
+   
     return Scaffold(
       endDrawer: DeviceType.isMobile(context)
           ? DrawerWidget(
@@ -84,7 +78,7 @@ class _RootPageState extends State<RootPage> {
                       );
                     });
               }),
-              const SizedBox(height: 20),
+              const SizedBox(height: 50),
               Expanded(
                 child: Row(
                   children: [

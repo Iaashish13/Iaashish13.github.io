@@ -20,6 +20,7 @@ _$BlogModelImpl _$$BlogModelImplFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updatedAt'] == null
           ? null
           : DateTime.parse(json['updatedAt'] as String),
+      path: json['path'] as String?,
     );
 
 Map<String, dynamic> _$$BlogModelImplToJson(_$BlogModelImpl instance) =>
@@ -32,4 +33,5 @@ Map<String, dynamic> _$$BlogModelImplToJson(_$BlogModelImpl instance) =>
       'shortDescription': instance.shortDescription,
       'createdAt': instance.createdAt?.toIso8601String(),
       'updatedAt': instance.updatedAt?.toIso8601String(),
+      'path': instance.path,
     };

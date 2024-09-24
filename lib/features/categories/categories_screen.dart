@@ -5,6 +5,6 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('Categories Screne');
+    return Center(child: const Text('Stay Tuned'));
   }
 }
