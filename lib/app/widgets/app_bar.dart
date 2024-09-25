@@ -36,7 +36,7 @@ class AppMenuBar extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          margin: const EdgeInsets.symmetric(vertical: 10),
+          margin: const EdgeInsets.symmetric(vertical: 15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -73,23 +73,26 @@ class AppMenuBar extends StatelessWidget {
                             onPressed: () {
                               onTap!(index);
                             },
-                            child: Text(
-                              e,
-                              style: theme.textTheme.bodyLarge?.copyWith(
-                                height: 1.5,
-                                decoration: tabIndex == index
-                                    ? TextDecoration.underline
-                                    : TextDecoration.none,
-                                decorationThickness: 1,
-                                color: Colors.transparent,
-                                shadows: [
-                                  Shadow(
-                                      color:
-                                          theme.brightness == Brightness.light
-                                              ? Colors.black
-                                              : Colors.white,
-                                      offset: const Offset(0, -5))
-                                ],
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 8),
+                              child: Text(
+                                e,
+                                style: theme.textTheme.bodyLarge?.copyWith(
+                                  height: 1.5,
+                                  decoration: tabIndex == index
+                                      ? TextDecoration.underline
+                                      : TextDecoration.none,
+                                  decorationThickness: 1,
+                                  color: Colors.transparent,
+                                  shadows: [
+                                    Shadow(
+                                        color:
+                                            theme.brightness == Brightness.light
+                                                ? Colors.black
+                                                : Colors.white,
+                                        offset: const Offset(0, -5))
+                                  ],
+                                ),
                               ),
                             ),
                           )),
