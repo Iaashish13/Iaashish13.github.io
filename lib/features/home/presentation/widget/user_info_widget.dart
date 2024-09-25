@@ -2,15 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:my_website/constants/assets.gen.dart';
 import 'package:my_website/features/home/presentation/widget/widget.dart';
+import 'package:my_website/utils/utils.dart';
 
-class UserInfoWidget extends StatefulWidget {
+class UserInfoWidget extends StatelessWidget {
   const UserInfoWidget({super.key});
 
-  @override
-  State<UserInfoWidget> createState() => _UserInfoWidgetState();
-}
-
-class _UserInfoWidgetState extends State<UserInfoWidget> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -44,6 +40,9 @@ class _UserInfoWidgetState extends State<UserInfoWidget> {
           assetName: Assets.svgs.githubIcon,
           socialName: 'Github',
           toChangeSvgColor: true,
+          onTap: () async {
+            await openUrlInNewTab(url: 'https://github.com/Iaashish13');
+          },
         ),
         const SizedBox(
           height: 10,
@@ -51,6 +50,10 @@ class _UserInfoWidgetState extends State<UserInfoWidget> {
         UserSocialWidget(
           assetName: Assets.svgs.linkdeinIcon,
           socialName: 'Linkdein',
+          onTap: () async {
+            await openUrlInNewTab(
+                url: 'https://www.linkedin.com/in/aashish-regmi/');
+          },
         ),
         const SizedBox(
           height: 10,
@@ -58,6 +61,9 @@ class _UserInfoWidgetState extends State<UserInfoWidget> {
         UserSocialWidget(
           assetName: Assets.svgs.twitterIcon,
           socialName: 'Twitter',
+          onTap: () async {
+            await openUrlInNewTab(url: 'https://x.com/whois_aashish_');
+          },
         ),
         const SizedBox(
           height: 30,

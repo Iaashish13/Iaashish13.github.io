@@ -41,6 +41,7 @@ class UserSocialWidget extends StatelessWidget {
         ),
         HoverTextWithUnderlineWidget(
           hoverText: socialName,
+          onTap: onTap,
         )
       ],
     );
