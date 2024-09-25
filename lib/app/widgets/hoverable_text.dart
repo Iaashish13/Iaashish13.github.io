@@ -36,6 +36,8 @@ class _HoverTextWithUnderlineWidgetState
           builder: (context, isHovered, child) {
             return Text(
               widget.hoverText,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: widget.toIncreasFontSizeAndWeight == true
                   ? theme.textTheme.displayMedium?.copyWith(
                       decorationColor:
