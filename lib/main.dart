@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 import 'package:my_website/core/route/route.dart';
 import 'package:my_website/core/theme/cubit/theme_cubit_cubit.dart';
@@ -16,7 +15,7 @@ Future<void> main() async {
   // FlutterError.onError = (FlutterErrorDetails details) {
   //   FlutterError.dumpErrorToConsole(details);
   // };
-  setUrlStrategy(PathUrlStrategy());
+
   await setupLocator();
 
   runApp(

@@ -23,6 +23,7 @@ MultipleScreenRoute get _blogScreenRoute => MultipleScreenRoute(
 
 // GoRouter configuration
 final router = GoRouter(
+  
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
   initialLocation: homeRoute,

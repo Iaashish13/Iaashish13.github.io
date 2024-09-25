@@ -14,7 +14,7 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-    <base href="$FLUTTER_BASE_HREF" />
+    <base href="/" />
 
     <meta charset="UTF-8" />
     <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
@@ -22,6 +22,7 @@
 
     <!-- iOS meta tags & icons -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
+
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="apple-mobile-web-app-title" content="aashishregmi_com_np" />
     <link rel="apple-touch-icon" href="icons/Icon-192.png" />
@@ -31,9 +32,24 @@
 
     <title>aashishregmi_com_np</title>
     <link rel="manifest" href="manifest.json" />
+    <style>
+      .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex; /* Default Axis is X*/
+        justify-content: center; /* Main Axis */
+        align-items: center; /* Cross Axis */
+      }
+      .indicator {
+        width: 20vw;
+      }
+    </style>
   </head>
 
   <body>
+    <div id="loading_indicator" class="container">
+      <img class="indicator" src="./assets/loading.gif" />
+    </div>
     <script src="flutter_bootstrap.js" async></script>
   </body>
 </html>

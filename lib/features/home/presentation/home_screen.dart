@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
           ),
           Expanded(
             child: BlogListWidget(
-              bloglist: bloglist,
+              bloglist: bloglist.reversed.toList(),
               onTap: (id) {
                 if (id != null) {
                   context.go(
