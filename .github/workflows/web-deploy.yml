@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    # Update branch according from where you will be pushing the code
+    # Update branch according to where you will be pushing the code
     branches: [ main ]
 
 jobs:
@@ -26,19 +26,24 @@ jobs:
           cd build
           mkdir web-deploy
           cd web-deploy
-          #! Update with your Email ID associated with GitHub
+          # Update with your Email ID associated with GitHub
           git config --global user.email jungali1000@gmail.com
-          #! Update with your username associated with GitHub
+          # Update with your username associated with GitHub
           git config --global user.name Iaashish13
           git config --global init.defaultBranch main
           git init
           # the repository to push the deploy into
-          #! Update the following with your username and repository
+          # Update the following with your username and repository
           git remote add origin https://${{secrets.ACCESS_TOKEN}}@github.com/Iaashish13/Iaashish13.github.io.git
           git fetch origin gh-pages
           git switch gh-pages
-          # copy the build that is there in ROOT/build/web into ROOT/build/web-deploy
+          
+          # Copy the build that is there in ROOT/build/web into ROOT/build/web-deploy
           cp -R ../web/* .
+
+          # Create .nojekyll file to disable Jekyll processing
+          touch .nojekyll
+
           git status
           git add .
           # add commit of the previous commit from main
@@ -47,4 +52,3 @@ jobs:
           echo ""
           git commit -m "${{ github.event.head_commit.message }}"
           git push origin gh-pages
-          
