@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:markdown_widget/markdown_widget.dart';
 
 import 'package:my_website/app/widgets/widget.dart';
@@ -44,24 +45,36 @@ class _BlogScreenState extends State<BlogScreen> {
     final isDark = theme.brightness == Brightness.dark;
     final config =
         isDark ? MarkdownConfig.darkConfig : MarkdownConfig.defaultConfig;
-    return ResponsivePadding(
-        child: MarkdownWidget(
-      data: blogData ?? '',
-      config: config.copy(configs: [
-        PreConfig(
-            wrapper: (child, code, language) => CodeWrapperWidget(
-                  child,
-                  code,
-                  language,
-                ),
-            textStyle: theme.textTheme.bodySmall!.copyWith(
-              fontFamily: 'Euclid-Regular',
+    return Scaffold(
+      body: ResponsivePadding(
+          child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const BackButton(),
+          Expanded(
+            child: MarkdownWidget(
+              data: blogData ?? '',
+              config: config.copy(configs: [
+                PreConfig(
+                    wrapper: (child, code, language) => CodeWrapperWidget(
+                          child,
+                          code,
+                          language,
+                        ),
+                    textStyle: theme.textTheme.bodySmall!.copyWith(
+                      fontFamily: GoogleFonts.openSans().fontFamily,
+                    ),
+                    decoration: BoxDecoration(
+                        color: isDark
+                            ? const Color(0xff2d2d2d)
+                            : const Color(0xffeff1f3),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(8.0))))
+              ]),
             ),
-            decoration: BoxDecoration(
-                color:
-                    isDark ? const Color(0xff2d2d2d) : const Color(0xffeff1f3),
-                borderRadius: const BorderRadius.all(Radius.circular(8.0))))
-      ]),
-    ));
+          ),
+        ],
+      )),
+    );
   }
 }

@@ -13,5 +13,12 @@ final bloglist = [
       title: 'Run Background tasks in Flutter',
       path: Assets.blogs.workManagerFlutter,
       shortDescription: 'How to run background tasks in Flutter',
-      createdAt: DateTime(2021, 2, 20)),
+      createdAt: DateTime(2022, 2, 20)),
+  BlogModel(
+      id: 3,
+      title: 'Widgets-Stateless Widget',
+      path: Assets.blogs.widgetsStatelessWidget,
+      shortDescription:
+          'Deep dive into Widgets, how they get updated and peformance optimization.',
+      createdAt: DateTime(2023, 1, 15))
 ];

@@ -1,12 +1,13 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 final lightThemes = ThemeData(
   iconTheme: const IconThemeData(color: Colors.black, size: 18),
   appBarTheme:
       const AppBarTheme(backgroundColor: Colors.blueAccent, elevation: 1),
   primaryColor: Colors.blueAccent,
-  fontFamily: 'Poppins',
+  fontFamily: GoogleFonts.lato().fontFamily,
   scaffoldBackgroundColor: Colors.white,
   textTheme: const TextTheme(
     displayMedium: TextStyle(
@@ -25,7 +26,7 @@ final lightThemes = ThemeData(
 );
 
 final lightTheme = FlexThemeData.light(
-  fontFamily: 'Poppins',
+  fontFamily: GoogleFonts.lato().fontFamily,
   useMaterial3: true,
   scheme: FlexScheme.blueM3,
   textTheme: const TextTheme(

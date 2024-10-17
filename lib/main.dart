@@ -10,11 +10,7 @@ import 'package:my_website/injector.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // log('${Firebase.apps.length}', name: 'main.dart');
-  // FlutterError.onError = (FlutterErrorDetails details) {
-  //   FlutterError.dumpErrorToConsole(details);
-  // };
+ 
 
   await setupLocator();
 
@@ -38,7 +34,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp.router(
             routerConfig: router,
             debugShowCheckedModeBanner: false,
-            title: 'My website',
+            title: 'Aashish Regmi',
             theme: state ? darkTheme : lightTheme,
           );
         },

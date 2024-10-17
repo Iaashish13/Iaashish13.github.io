@@ -15,15 +15,24 @@ final GlobalKey<NavigatorState> _sectionANavigatorKey =
 
 MultipleScreenRoute get _blogScreenRoute => MultipleScreenRoute(
       path: '$blogRoute/:id',
-      // name: '$blogRoute/:id',
-      builder: (context, state) => BlogScreen(
-        blogId: int.parse(state.pathParameters['id'] ?? '1'),
-      ),
+      pageBuilder: (context, state) {
+        return CustomTransitionPage(
+            key: state.pageKey,
+            child: BlogScreen(
+              blogId: int.parse(state.pathParameters['id'] ?? '1'),
+            ),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              return FadeTransition(
+                  opacity:
+                      CurveTween(curve: Curves.easeInOut).animate(animation),
+                  child: child);
+            });
+      },
     );
 
 // GoRouter configuration
 final router = GoRouter(
-  
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
   initialLocation: homeRoute,
@@ -79,5 +88,6 @@ final router = GoRouter(
 );
 
 class MultipleScreenRoute extends GoRoute {
-  MultipleScreenRoute({required super.path, super.builder, super.name});
+  MultipleScreenRoute(
+      {required super.path, super.builder, super.name, super.pageBuilder});
 }
