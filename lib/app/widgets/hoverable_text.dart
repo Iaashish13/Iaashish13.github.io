@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class HoverTextWithUnderlineWidget extends StatefulWidget {
@@ -23,6 +22,7 @@ class HoverTextWithUnderlineWidget extends StatefulWidget {
 class _HoverTextWithUnderlineWidgetState
     extends State<HoverTextWithUnderlineWidget> {
   final ValueNotifier<bool> _isHovered = ValueNotifier(false);
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

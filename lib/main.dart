@@ -9,9 +9,6 @@ import 'package:my_website/injector.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
- 
-
   await setupLocator();
 
   runApp(

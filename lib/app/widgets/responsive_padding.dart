@@ -12,11 +12,11 @@ class ResponsivePadding extends StatelessWidget {
 
   double _getResponsivePadding(BuildContext context) {
     if (DeviceType.isDesktop(context)) {
-      return 100;
+      return 60;
     } else if (DeviceType.isTablet(context)) {
-      return 40;
+      return 30;
     }
-    return 20;
+    return 15;
   }
 
   @override

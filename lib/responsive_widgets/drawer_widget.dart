@@ -8,12 +8,14 @@ import 'package:my_website/constants/constants.dart';
 import 'package:my_website/core/theme/cubit/theme_cubit_cubit.dart';
 
 class DrawerWidget extends StatelessWidget {
+  final int selectedIndex;
   final void Function(int index)? onTap;
 
   const DrawerWidget({
-    super.key,
+    Key? key,
+    required this.selectedIndex,
     this.onTap,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,16 +24,23 @@ class DrawerWidget extends StatelessWidget {
           children: listofDrawer
               .mapIndexed(
                 (index, e) => Padding(
-                  padding: const EdgeInsets.only(top: 20),
+                  padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
                   child: ListTile(
-
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    selected: index == selectedIndex,
+                    selectedTileColor:
+                        Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white12
+                            : Colors.black12,
                     dense: true,
                     contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                     minLeadingWidth: 20,
-                    leading: Icon(
-                      e.icon,
-                      color: Theme.of(context).iconTheme.color,
-                    ),
+                    // leading: Icon(
+                    //   e.icon,
+                    //   color: Theme.of(context).iconTheme.color,
+                    // ),
                     title: Text(
                       e.title,
                       style: Theme.of(context).textTheme.bodyLarge,
@@ -45,14 +54,14 @@ class DrawerWidget extends StatelessWidget {
               )
               .toList()
             ..add(Padding(
-              padding: const EdgeInsets.only(top: 20),
+              padding: const EdgeInsets.only(top: 20, left: 20),
               child: BlocBuilder<ChangeThemeCubit, bool>(
                 builder: (context, state) {
                   return ListTile(
                     dense: true,
                     contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                     minLeadingWidth: 20,
-                    leading: Icon(
+                    trailing: Icon(
                       Icons.dark_mode,
                       color: Theme.of(context).iconTheme.color,
                     ),

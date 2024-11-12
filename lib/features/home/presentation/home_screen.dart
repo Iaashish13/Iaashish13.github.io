@@ -1,12 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
 import 'package:my_website/app/widgets/widget.dart';
 import 'package:my_website/constants/blogs_constant.dart';
-
-
-
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -23,8 +19,10 @@ class HomeScreen extends StatelessWidget {
             'Recent Posts',
             style: theme.textTheme.displayMedium,
           ),
-          const SizedBox(
-            height: 30,
+          const ResponsiveSizedBox(
+            desktopHeight: 30,
+            tabletHeight: 20,
+            mobileHeight: 10,
           ),
           Expanded(
             child: BlogListWidget(

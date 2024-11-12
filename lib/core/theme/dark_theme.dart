@@ -1,5 +1,6 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // final darkTheme = ThemeData(
 //   fontFamily: 'Poppins',
@@ -27,7 +28,7 @@ import 'package:flutter/material.dart';
 // );
 
 final darkTheme = FlexThemeData.dark(
-  fontFamily: 'Poppins',
+  fontFamily: GoogleFonts.lato().fontFamily,
   useMaterial3: true,
   scheme: FlexScheme.blueM3,
   textTheme: const TextTheme(

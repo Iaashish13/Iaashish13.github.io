@@ -1,8 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_website/app/widgets/app_bar.dart';
-import 'package:my_website/app/widgets/responsive_padding.dart';
+import 'package:my_website/app/widgets/widget.dart';
 import 'package:my_website/core/responsive/device_type.dart';
 import 'package:my_website/core/route/route.dart';
 import 'package:my_website/features/home/presentation/widget/user_info_widget.dart';
@@ -48,7 +47,6 @@ class _RootPageState extends State<RootPage> {
 
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
       endDrawer: DeviceType.isMobile(context)
           ? DrawerWidget(
@@ -56,6 +54,7 @@ class _RootPageState extends State<RootPage> {
                 _selectedIndexNotifier.value = index;
                 widget.statefulNavigationShell.goBranch(index);
               },
+              selectedIndex: _selectedIndexNotifier.value,
             )
           : null,
       body: SafeArea(
@@ -78,7 +77,7 @@ class _RootPageState extends State<RootPage> {
                       );
                     });
               }),
-              const SizedBox(height: 50),
+              const ResponsiveSizedBox(),
               Expanded(
                 child: Row(
                   children: [

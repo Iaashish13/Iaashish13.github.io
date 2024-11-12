@@ -10,6 +10,13 @@
 class $AssetsBlogsGen {
   const $AssetsBlogsGen();
 
+  /// File path: assets/blogs/build_method_state.md
+  String get buildMethodState => 'assets/blogs/build_method_state.md';
+
+  /// File path: assets/blogs/stateful_widget_deep_dive.md
+  String get statefulWidgetDeepDive =>
+      'assets/blogs/stateful_widget_deep_dive.md';
+
   /// File path: assets/blogs/test.md
   String get test => 'assets/blogs/test.md';
 
@@ -21,7 +28,13 @@ class $AssetsBlogsGen {
   String get workManagerFlutter => 'assets/blogs/work_manager_flutter.md';
 
   /// List of all assets
-  List<String> get values => [test, widgetsStatelessWidget, workManagerFlutter];
+  List<String> get values => [
+        buildMethodState,
+        statefulWidgetDeepDive,
+        test,
+        widgetsStatelessWidget,
+        workManagerFlutter
+      ];
 }
 
 class $AssetsSvgsGen {

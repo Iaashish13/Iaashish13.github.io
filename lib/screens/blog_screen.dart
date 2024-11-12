@@ -63,11 +63,14 @@ class _BlogScreenState extends State<BlogScreen> {
                         ),
                     textStyle: theme.textTheme.bodySmall!.copyWith(
                       fontFamily: GoogleFonts.openSans().fontFamily,
+                      color: isDark
+                          ? const Color(0xffD1D1D1)
+                          : const Color(0xff333333),
                     ),
                     decoration: BoxDecoration(
                         color: isDark
-                            ? const Color(0xff2d2d2d)
-                            : const Color(0xffeff1f3),
+                            ? const Color(0xff2E2E2E).withOpacity(0.4)
+                            : const Color(0xffF5F5F5),
                         borderRadius:
                             const BorderRadius.all(Radius.circular(8.0))))
               ]),
