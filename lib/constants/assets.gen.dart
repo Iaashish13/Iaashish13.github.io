@@ -13,6 +13,9 @@ class $AssetsBlogsGen {
   /// File path: assets/blogs/build_method_state.md
   String get buildMethodState => 'assets/blogs/build_method_state.md';
 
+  /// File path: assets/blogs/prevent_screen_capture.md
+  String get preventScreenCapture => 'assets/blogs/prevent_screen_capture.md';
+
   /// File path: assets/blogs/stateful_widget_deep_dive.md
   String get statefulWidgetDeepDive =>
       'assets/blogs/stateful_widget_deep_dive.md';
@@ -30,6 +33,7 @@ class $AssetsBlogsGen {
   /// List of all assets
   List<String> get values => [
         buildMethodState,
+        preventScreenCapture,
         statefulWidgetDeepDive,
         test,
         widgetsStatelessWidget,

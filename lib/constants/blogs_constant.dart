@@ -35,4 +35,11 @@ final bloglist = [
       shortDescription:
           'Deep dive into StatefulWidgets, their lifecycle and method inside it works',
       createdAt: DateTime(2023, 11, 11)),
+       BlogModel(
+      id: 6,
+      title: 'Prevent Screenshot and recording using Method Channel',
+      path: Assets.blogs.preventScreenCapture,
+      shortDescription:
+          'Lets guard our privacy screen using method channel',
+      createdAt: DateTime(2024, 11, 12)),
 ];
