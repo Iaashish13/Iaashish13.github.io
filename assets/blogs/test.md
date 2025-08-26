@@ -1,1 +1,0 @@
-This is my flutter article. Basically I am gonna share here all the things that I will be learning.
