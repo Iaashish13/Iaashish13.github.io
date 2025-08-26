@@ -8,38 +8,28 @@ interface BlogCardProps {
 
 export function BlogCard({ blog }: BlogCardProps) {
   return (
-    <article className="group relative rounded-lg border bg-background p-4 sm:p-6 hover:shadow-md transition-all duration-200 hover:scale-[1.02]">
-      <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground mb-3">
-        <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
-          {blog.subCategory}
-        </span>
-        <span className="hidden sm:inline">•</span>
-        <time dateTime={blog.date} className="text-xs sm:text-sm">
-          {formatDate(blog.date)}
-        </time>
-        <span className="hidden sm:inline">•</span>
-        <span className="text-xs sm:text-sm">{blog.readingTime}</span>
-      </div>
-
+    <article className="group">
       <Link href={`/blog/${blog.slug}`} className="block">
-        <h3 className="text-lg sm:text-xl font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
-          {blog.title}
-        </h3>
-        <p className="text-muted-foreground mb-4 line-clamp-3 text-sm sm:text-base">
-          {truncateText(blog.description, 120)}
-        </p>
-      </Link>
+        <div className="border-b border-gray-200 dark:border-gray-700 pb-6 hover:border-gray-300 dark:hover:border-gray-600 transition-colors">
+          <div className="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400 mb-3">
+            <span className="font-medium text-gray-700 dark:text-gray-300">
+              {blog.subCategory}
+            </span>
+            <span>•</span>
+            <time dateTime={blog.date}>{formatDate(blog.date)}</time>
+            <span>•</span>
+            <span>{blog.readingTime}</span>
+          </div>
 
-      <div className="flex flex-wrap gap-1 sm:gap-2">
-        {blog.tags.slice(0, 3).map((tag) => (
-          <span
-            key={tag}
-            className="text-xs px-2 py-1 rounded bg-muted text-muted-foreground"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
+          <h3 className="text-xl font-light mb-3 group-hover:text-gray-900 dark:group-hover:text-gray-100 transition-colors leading-tight">
+            {blog.title}
+          </h3>
+
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            {truncateText(blog.description, 120)}
+          </p>
+        </div>
+      </Link>
     </article>
   );
 }
