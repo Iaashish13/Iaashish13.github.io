@@ -20,15 +20,8 @@ export const metadata: Metadata = {
   keywords: ["Flutter", "Mobile Development", "React", "Next.js", "Portfolio"],
   authors: [{ name: personalInfo.name }],
   creator: personalInfo.name,
-  icons: {
-    icon: [
-      { url: '/icon.png', sizes: '512x512', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-  },
-    openGraph: {
+  manifest: '/manifest.json',
+  openGraph: {
       type: "website",
       locale: "en_US",
       url: "https://aashishregmi.com.np",
