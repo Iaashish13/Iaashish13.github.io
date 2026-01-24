@@ -1,0 +1,330 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --border: 214.3 31.8% 91.4%;
+    --terminal-green: 142 71% 45%;
+    --terminal-blue: 199 89% 48%;
+    --terminal-yellow: 45 93% 47%;
+    --terminal-red: 0 84% 60%;
+    --terminal-purple: 271 81% 56%;
+    --terminal-cyan: 187 85% 53%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 240 10% 3.9%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --border: 240 3.7% 15.9%;
+    --terminal-green: 142 71% 45%;
+    --terminal-blue: 199 89% 48%;
+    --terminal-yellow: 45 93% 47%;
+    --terminal-red: 0 84% 60%;
+    --terminal-purple: 271 81% 56%;
+    --terminal-cyan: 187 85% 53%;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  * {
+    @apply border-border;
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto max-w-container px-4 sm:px-6 lg:px-8;
+  }
+
+  .prose {
+    @apply prose-headings:text-foreground prose-headings:font-mono prose-headings:font-bold;
+    @apply prose-p:text-foreground prose-p:leading-relaxed prose-p:text-sm;
+    @apply prose-strong:text-foreground prose-strong:font-semibold;
+    @apply prose-code:text-[hsl(var(--terminal-cyan))] prose-code:font-mono prose-code:bg-[hsl(var(--background))] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:border prose-code:border-border prose-code:before:content-[''] prose-code:after:content-[''];
+    @apply prose-pre:bg-[hsl(var(--background))] prose-pre:text-foreground prose-pre:border prose-pre:border-border prose-pre:font-mono prose-pre:text-xs prose-pre:shadow-sm;
+    @apply prose-a:text-[hsl(var(--terminal-blue))] prose-a:no-underline hover:prose-a:underline;
+    @apply prose-blockquote:border-l-[hsl(var(--terminal-green))] prose-blockquote:bg-[hsl(var(--background))] prose-blockquote:text-muted-foreground prose-blockquote:italic prose-blockquote:border-l-4 prose-blockquote:text-sm;
+    @apply prose-ul:text-foreground prose-ol:text-foreground prose-ul:text-sm prose-ol:text-sm;
+    @apply prose-li:text-foreground prose-li:marker:text-[hsl(var(--terminal-green))];
+    @apply prose-hr:border-border;
+    @apply prose-table:text-foreground prose-th:font-mono prose-th:font-bold;
+  }
+
+  .prose.dark {
+    @apply prose-headings:text-foreground prose-headings:font-mono prose-headings:font-bold;
+    @apply prose-p:text-foreground prose-p:leading-relaxed prose-p:text-sm;
+    @apply prose-strong:text-foreground prose-strong:font-semibold;
+    @apply prose-code:text-[hsl(var(--terminal-cyan))] prose-code:font-mono prose-code:bg-[hsl(var(--background))] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:border prose-code:border-border prose-code:before:content-[''] prose-code:after:content-[''];
+    @apply prose-pre:bg-[hsl(var(--background))] prose-pre:text-foreground prose-pre:border prose-pre:border-border prose-pre:font-mono prose-pre:text-xs prose-pre:shadow-sm;
+    @apply prose-a:text-[hsl(var(--terminal-blue))] prose-a:no-underline hover:prose-a:underline;
+    @apply prose-blockquote:border-l-[hsl(var(--terminal-green))] prose-blockquote:bg-[hsl(var(--background))] prose-blockquote:text-muted-foreground prose-blockquote:italic prose-blockquote:border-l-4 prose-blockquote:text-sm;
+    @apply prose-ul:text-foreground prose-ol:text-foreground prose-ul:text-sm prose-ol:text-sm;
+    @apply prose-li:text-foreground prose-li:marker:text-[hsl(var(--terminal-green))];
+    @apply prose-hr:border-border;
+    @apply prose-table:text-foreground prose-th:font-mono prose-th:font-bold;
+  }
+
+  /* Enhanced code block styling */
+  .prose pre {
+    @apply relative overflow-x-auto rounded-lg p-3;
+    line-height: 1.6;
+  }
+
+  .prose pre code {
+    @apply block leading-relaxed text-xs;
+  }
+
+  /* Inline code distinction from code blocks */
+  .prose :not(pre) > code {
+    @apply font-mono text-[hsl(var(--terminal-cyan))] bg-[hsl(var(--background))] px-1.5 py-0.5 rounded text-xs border border-border;
+  }
+
+  /* Terminal styles */
+  .terminal-window {
+    @apply rounded-lg overflow-hidden border border-border bg-secondary shadow-lg;
+  }
+
+  .terminal-header {
+    @apply flex items-center gap-2 px-3 py-2 bg-muted border-b border-border;
+  }
+
+  .terminal-dot {
+    @apply w-2.5 h-2.5 rounded-full;
+  }
+
+  .terminal-body {
+    @apply p-3 font-mono text-xs text-foreground bg-[hsl(var(--background))];
+    min-height: 80px;
+    line-height: 1.5;
+  }
+
+  .terminal-prompt {
+    @apply flex items-center gap-1.5 text-foreground flex-wrap;
+  }
+
+  .terminal-prompt::before {
+    content: "$";
+    @apply text-[hsl(var(--terminal-green))] font-bold text-xs;
+  }
+
+  /* Code block styles */
+  .code-block {
+    @apply bg-[hsl(var(--background))] rounded-lg p-3 overflow-x-auto font-mono text-xs border border-border shadow-sm;
+    line-height: 1.5;
+  }
+
+  /* Typing animation */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+
+  .typing-animation {
+    overflow: hidden;
+    border-right: 2px solid hsl(var(--terminal-green));
+    white-space: nowrap;
+    animation:
+      typing 3s steps(40, end),
+      blink 0.75s step-end infinite;
+  }
+
+  /* Syntax highlighting colors */
+  .token-keyword {
+    @apply text-[hsl(var(--terminal-purple))];
+  }
+
+  .token-string {
+    @apply text-[hsl(var(--terminal-yellow))];
+  }
+
+  .token-function {
+    @apply text-[hsl(var(--terminal-blue))];
+  }
+
+  .token-comment {
+    @apply text-muted-foreground italic;
+  }
+
+  .token-operator {
+    @apply text-[hsl(var(--terminal-cyan))];
+  }
+
+  /* Enhanced syntax highlighting for code blocks */
+  .prose pre code .token.keyword,
+  .prose pre code .token.selector-tag,
+  .prose pre code .token.built_in {
+    @apply text-[hsl(var(--terminal-purple))];
+  }
+
+  .prose pre code .token.string,
+  .prose pre code .token.attr {
+    @apply text-[hsl(var(--terminal-yellow))];
+  }
+
+  .prose pre code .token.function,
+  .prose pre code .token.title {
+    @apply text-[hsl(var(--terminal-blue))];
+  }
+
+  .prose pre code .token.comment {
+    @apply text-muted-foreground;
+    font-style: italic;
+  }
+
+  .prose pre code .token.number,
+  .prose pre code .token.literal {
+    @apply text-[hsl(var(--terminal-cyan))];
+  }
+
+  .prose pre code .token.variable,
+  .prose pre code .token.params {
+    @apply text-foreground;
+  }
+
+  .prose pre code .token.tag {
+    @apply text-[hsl(var(--terminal-green))];
+  }
+
+  /* Prism.js theme override with terminal colors */
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    @apply text-muted-foreground;
+    font-style: italic;
+  }
+
+  .token.punctuation {
+    @apply text-muted-foreground;
+  }
+
+  .token.property,
+  .token.tag,
+  .token.boolean,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    @apply text-[hsl(var(--terminal-green))];
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    @apply text-[hsl(var(--terminal-yellow))];
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string {
+    @apply text-[hsl(var(--terminal-cyan))];
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.keyword {
+    @apply text-[hsl(var(--terminal-purple))];
+  }
+
+  .token.function,
+  .token.class-name {
+    @apply text-[hsl(var(--terminal-blue))];
+  }
+
+  .token.regex,
+  .token.important,
+  .token.variable {
+    @apply text-foreground;
+  }
+
+  .token.number {
+    @apply text-[hsl(var(--terminal-cyan))];
+  }
+
+  .token.important,
+  .token.bold {
+    @apply font-bold;
+  }
+
+  .token.italic {
+    font-style: italic;
+  }
+
+  /* Ensure code blocks use proper background */
+  pre[class*="language-"] {
+    @apply bg-[hsl(var(--background))] border border-border rounded-lg shadow-sm;
+    padding: 0.75rem;
+    margin: 1.25rem 0;
+    line-height: 1.6;
+  }
+
+  code[class*="language-"] {
+    @apply text-foreground font-mono;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+
+  /* Line numbers styling if using line numbers plugin */
+  .line-numbers .line-numbers-rows {
+    @apply border-r border-border;
+  }
+
+  /* Fade in animation */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out forwards;
+  }
+
+  /* Hide scrollbar utility */
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+}

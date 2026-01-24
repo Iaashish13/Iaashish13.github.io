@@ -1,0 +1,28 @@
+export const skills = {
+  core: ["Flutter", "Dart", "Swift", "Python", "iOS", "Next.js"],
+  seniorFlutter: [
+    "State Management (Bloc, Provider, Riverpod)",
+    "Architecture Patterns (TDD Clean Architecture, MVVM, Bloc Pattern)",
+    "Testing (Unit Testing, Widget Testing)",
+    "Performance Optimization & DevTools",
+    "CI/CD (GitHub Actions, CodeMagic)",
+    "Platform Channels & MethodChannel",
+    "Offline-First Architecture",
+    "Custom Widgets & UI",
+  ],
+  additional: [
+    "REST APIs",
+    "Firebase & Supabase",
+    "Python Django",
+    "Git, GitHub, Bitbucket",
+    "Postman & API Testing",
+    "Figma",
+    "SQLite, Hive, Drift",
+    "Firestore, MySQL, PostgreSQL",
+    "Docker",
+    "Nginx",
+    "WorkManager & Background Tasks",
+    "Deep Linking",
+    "Payment Gateway Integration",
+  ],
+};
