@@ -17,29 +17,32 @@ export function CategoryFilter({
 
   return (
     <div className="mb-8">
-      <h2 className="text-lg sm:text-xl font-semibold mb-4">Filter by Category</h2>
+      <h2 className="text-base sm:text-lg font-mono font-semibold mb-4 text-foreground">
+        <span className="text-[hsl(var(--terminal-blue))]">{`// `}</span>
+        filter by category:
+      </h2>
       <div className="flex gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:overflow-visible">
         <button
           onClick={() => onCategoryChange("all")}
-          className={`whitespace-nowrap px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm rounded-lg font-medium transition-colors ${
+          className={`whitespace-nowrap px-3 py-1.5 text-xs sm:text-sm rounded font-mono transition-all border ${
             selectedCategory === "all"
-              ? "bg-primary text-primary-foreground"
-              : "bg-muted text-muted-foreground hover:bg-primary hover:text-primary-foreground"
+              ? "bg-[hsl(var(--terminal-green))]/10 border-[hsl(var(--terminal-green))]/50 text-[hsl(var(--terminal-green))]"
+              : "bg-secondary border-border text-muted-foreground hover:bg-muted hover:border-[hsl(var(--terminal-green))]/30"
           }`}
         >
-          All
+          all
         </button>
         {allSubCategories.map((subCategory) => (
           <button
             key={subCategory}
             onClick={() => onCategoryChange(subCategory)}
-            className={`whitespace-nowrap px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm rounded-lg font-medium transition-colors ${
+            className={`whitespace-nowrap px-3 py-1.5 text-xs sm:text-sm rounded font-mono transition-all border ${
               selectedCategory === subCategory
-                ? "bg-primary text-primary-foreground"
-                : "bg-muted text-muted-foreground hover:bg-primary hover:text-primary-foreground"
+                ? "bg-[hsl(var(--terminal-green))]/10 border-[hsl(var(--terminal-green))]/50 text-[hsl(var(--terminal-green))]"
+                : "bg-secondary border-border text-muted-foreground hover:bg-muted hover:border-[hsl(var(--terminal-green))]/30"
             }`}
           >
-            {subCategory}
+            {subCategory.toLowerCase()}
           </button>
         ))}
       </div>

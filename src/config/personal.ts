@@ -1,6 +1,7 @@
 export const personalInfo = {
   name: "Aashish Regmi",
   title: "Software Engineer | Mostly Flutter Developer",
+  siteUrl: "https://aashishregmi.com.np",
   email: "reg.aashish.13@gmail.com",
   github: "https://github.com/Iaashish13",
   linkedin: "https://linkedin.com/in/aashish-regmi",

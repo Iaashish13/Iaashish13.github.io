@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { ConsoleLogger } from "@/components/console-logger";
 import { personalInfo } from "@/config/personal";
+import { StructuredData, WebsiteSchema } from "@/components/seo/structured-data";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const jetbrainsMono = JetBrains_Mono({
@@ -13,6 +14,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://aashishregmi.com.np'),
   title: `${personalInfo.name} - ${personalInfo.title}`,
   description: personalInfo.about,
   keywords: ["Flutter", "Mobile Development", "React", "Next.js", "Portfolio"],
@@ -26,11 +28,11 @@ export const metadata: Metadata = {
       { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
     ],
   },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://iaashish13.github.io",
-    title: `${personalInfo.name} - ${personalInfo.title}`,
+    openGraph: {
+      type: "website",
+      locale: "en_US",
+      url: "https://aashishregmi.com.np",
+      title: `${personalInfo.name} - ${personalInfo.title}`,
     description: personalInfo.about,
     siteName: personalInfo.name,
     images: [
@@ -58,6 +60,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className="dark">
+      <head>
+        <StructuredData type="Person" />
+        <WebsiteSchema />
+      </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
         <ConsoleLogger />
         <div className="min-h-screen flex flex-col">

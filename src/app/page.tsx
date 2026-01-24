@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Github, Linkedin, Twitter, Mail, ArrowRight, Terminal as TerminalIcon, Code2, Cpu } from "lucide-react";
 import { personalInfo } from "@/config/personal";

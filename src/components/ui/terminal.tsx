@@ -11,9 +11,15 @@ interface TerminalProps {
   animated?: boolean;
 }
 
-export function Terminal({ commands = [], className = "", animated = false }: TerminalProps) {
+export function Terminal({
+  commands = [],
+  className = "",
+  animated = false,
+}: TerminalProps) {
   // Initialize visibleCommands based on animated prop to avoid SSR mismatch
-  const [visibleCommands, setVisibleCommands] = useState<number>(() => animated ? 0 : commands.length);
+  const [visibleCommands, setVisibleCommands] = useState<number>(() =>
+    animated ? 0 : commands.length,
+  );
   const [isTypingCommand, setIsTypingCommand] = useState(false);
 
   useEffect(() => {
@@ -40,7 +46,9 @@ export function Terminal({ commands = [], className = "", animated = false }: Te
   }, [visibleCommands, commands.length, animated]);
 
   // For non-animated mode, render all commands directly (SSR-friendly)
-  const commandsToShow = animated ? commands.slice(0, visibleCommands) : commands;
+  const commandsToShow = animated
+    ? commands.slice(0, visibleCommands)
+    : commands;
 
   return (
     <div className={`terminal-window ${className}`}>
@@ -66,7 +74,9 @@ export function Terminal({ commands = [], className = "", animated = false }: Te
             </span>
             <span className="text-muted-foreground">:</span>
             <span className="text-[hsl(var(--terminal-blue))]">~</span>
-            <span className="text-foreground">{commands[visibleCommands].input}</span>
+            <span className="text-foreground">
+              {commands[visibleCommands].input}
+            </span>
             <span className="inline-block w-2 h-4 bg-[hsl(var(--terminal-green))] ml-1 animate-pulse" />
           </div>
         )}
@@ -175,20 +185,32 @@ export function CodeBlock({
   language = "typescript",
   className = "",
 }: CodeBlockProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(code);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <div className={`code-block ${className}`}>
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-xs text-muted-foreground">{language}</span>
-        <button
-          onClick={() => navigator.clipboard.writeText(code)}
-          className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-        >
-          copy
-        </button>
+    <div className={`relative ${className}`}>
+      <div className="code-block">
+        <div className="flex items-center justify-between mb-2 pb-2 border-b border-border">
+          <span className="text-[10px] font-mono text-[hsl(var(--terminal-cyan))]">
+            {language}
+          </span>
+          <button
+            onClick={handleCopy}
+            className="text-[10px] font-mono px-2 py-0.5 rounded bg-secondary hover:bg-muted text-muted-foreground hover:text-foreground transition-colors border border-border"
+          >
+            {copied ? "✓ copied" : "copy"}
+          </button>
+        </div>
+        <pre className="text-foreground overflow-x-auto">
+          <code className="text-xs leading-relaxed">{code}</code>
+        </pre>
       </div>
-      <pre className="text-foreground">
-        <code>{code}</code>
-      </pre>
     </div>
   );
 }

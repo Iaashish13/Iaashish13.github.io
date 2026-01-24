@@ -33,46 +33,54 @@ export function SocialShare({ blog }: SocialShareProps) {
   };
 
   return (
-    <div className="flex items-center gap-4">
-      <span className="text-sm text-muted-foreground">Share:</span>
+    <div className="code-block">
+      <div className="flex flex-wrap items-center gap-3">
+        <span className="text-xs font-mono text-muted-foreground">
+          <span className="text-[hsl(var(--terminal-blue))]">{`// `}</span>share:
+        </span>
 
-      <a
-        href={shareUrls.twitter}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
-        aria-label="Share on Twitter"
-      >
-        <Twitter className="h-4 w-4" />
-      </a>
+        <a
+          href={shareUrls.twitter}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-3 py-1.5 rounded bg-secondary hover:bg-muted border border-border hover:border-[hsl(var(--terminal-cyan))] transition-colors text-xs font-mono flex items-center gap-2"
+          aria-label="Share on Twitter"
+        >
+          <Twitter className="h-3 w-3" />
+          <span className="text-muted-foreground">twitter</span>
+        </a>
 
-      <a
-        href={shareUrls.linkedin}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
-        aria-label="Share on LinkedIn"
-      >
-        <Linkedin className="h-4 w-4" />
-      </a>
+        <a
+          href={shareUrls.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-3 py-1.5 rounded bg-secondary hover:bg-muted border border-border hover:border-[hsl(var(--terminal-blue))] transition-colors text-xs font-mono flex items-center gap-2"
+          aria-label="Share on LinkedIn"
+        >
+          <Linkedin className="h-3 w-3" />
+          <span className="text-muted-foreground">linkedin</span>
+        </a>
 
-      <a
-        href={shareUrls.facebook}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
-        aria-label="Share on Facebook"
-      >
-        <Facebook className="h-4 w-4" />
-      </a>
+        <a
+          href={shareUrls.facebook}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-3 py-1.5 rounded bg-secondary hover:bg-muted border border-border hover:border-[hsl(var(--terminal-purple))] transition-colors text-xs font-mono flex items-center gap-2"
+          aria-label="Share on Facebook"
+        >
+          <Facebook className="h-3 w-3" />
+          <span className="text-muted-foreground">facebook</span>
+        </a>
 
-      <button
-        onClick={copyToClipboard}
-        className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
-        aria-label="Copy link"
-      >
-        <LinkIcon className="h-4 w-4" />
-      </button>
+        <button
+          onClick={copyToClipboard}
+          className="px-3 py-1.5 rounded bg-secondary hover:bg-muted border border-border hover:border-[hsl(var(--terminal-green))] transition-colors text-xs font-mono flex items-center gap-2"
+          aria-label="Copy link"
+        >
+          <LinkIcon className="h-3 w-3" />
+          <span className="text-muted-foreground">copy</span>
+        </button>
+      </div>
     </div>
   );
 }

@@ -1,11 +1,12 @@
 import { MetadataRoute } from "next";
 import { getAllBlogs } from "@/lib/mdx";
+import { personalInfo } from "@/config/personal";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogs = getAllBlogs();
-  const baseUrl = "https://iaashish13.github.io";
+  const baseUrl = personalInfo.siteUrl;
 
   const blogUrls = blogs.map((blog) => ({
     url: `${baseUrl}/blog/${blog.slug}`,

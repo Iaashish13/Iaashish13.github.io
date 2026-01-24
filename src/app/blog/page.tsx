@@ -1,7 +1,4 @@
 import { getAllBlogs } from "@/lib/mdx";
-import { BlogCard } from "@/components/blog/blog-card";
-import { CategoryFilter } from "@/components/blog/category-filter";
-import { Search } from "@/components/blog/search";
 import { BlogClientWrapper } from "@/components/blog/blog-client-wrapper";
 import { FileText } from "lucide-react";
 

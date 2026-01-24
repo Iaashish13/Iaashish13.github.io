@@ -11,17 +11,17 @@ interface SearchProps {
 export function Search({
   value,
   onChange,
-  placeholder = "Search blog posts...",
+  placeholder = "$ search posts...",
 }: SearchProps) {
   return (
-    <div className="relative">
-      <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+    <div className="relative code-block">
+      <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[hsl(var(--terminal-green))]" />
       <input
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full pl-10 pr-4 py-2 border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+        className="w-full pl-10 pr-4 py-2.5 bg-transparent text-foreground placeholder:text-muted-foreground font-mono text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--terminal-green))]/50 rounded border-0"
       />
     </div>
   );

@@ -3,11 +3,14 @@ import { getBlogBySlug, getAllBlogs } from "@/lib/mdx";
 import { formatDate } from "@/lib/utils";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
-import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
+import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { SocialShare } from "@/components/blog/social-share";
 import { RelatedPosts } from "@/components/blog/related-posts";
 import { createBlogMetadata } from "@/lib/metadata";
 import { Metadata } from "next";
+import rehypePrism from "rehype-prism-plus";
+import "prismjs/themes/prism-tomorrow.css";
+import { StructuredData } from "@/components/seo/structured-data";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -38,6 +41,8 @@ export async function generateMetadata({
     title: blog.title,
     description: blog.description,
     slug: blog.slug,
+    tags: blog.tags,
+    category: blog.category,
   });
 }
 
@@ -50,66 +55,101 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <div className="container py-8">
+    <div className="min-h-screen py-8 px-4">
+      <StructuredData
+        type="BlogPosting"
+        blogData={{
+          title: blog.title,
+          description: blog.description,
+          slug: blog.slug,
+          date: blog.date,
+          tags: blog.tags,
+          category: blog.category,
+        }}
+      />
       <div className="max-w-4xl mx-auto">
-        {/* Back to Blog */}
+        {/* Terminal-style Back Navigation */}
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-sm font-mono text-muted-foreground hover:text-[hsl(var(--terminal-green))] transition-colors mb-8 code-block w-fit"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back to Blog
+          <span className="text-[hsl(var(--terminal-cyan))]">$</span> cd ../blog_posts/
         </Link>
 
-        {/* Blog Header */}
+        {/* Blog Header - Terminal Style */}
         <header className="mb-8">
-          <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-            <span className="px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">
-              {blog.subCategory}
-            </span>
-            <div className="flex items-center gap-1">
-              <Calendar className="h-4 w-4" />
-              <time dateTime={blog.date}>{formatDate(blog.date)}</time>
-            </div>
-            <div className="flex items-center gap-1">
-              <Clock className="h-4 w-4" />
-              <span>{blog.readingTime}</span>
+          {/* File name style title */}
+          <div className="flex items-center gap-2 mb-4">
+            <h1 className="text-3xl sm:text-4xl font-bold font-mono text-foreground break-words">
+              {blog.slug}
+              <span className="text-[hsl(var(--terminal-green))]">.md</span>
+            </h1>
+          </div>
+
+          {/* Metadata in code-block style */}
+          <div className="code-block mb-6">
+            <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm font-mono">
+              <div className="flex items-center gap-2">
+                <span className="text-[hsl(var(--terminal-purple))]">category:</span>
+                <span className="px-2 py-1 rounded bg-muted border border-border text-foreground">
+                  {blog.subCategory}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Calendar className="h-4 w-4 text-[hsl(var(--terminal-cyan))]" />
+                <time dateTime={blog.date} className="text-muted-foreground">
+                  {formatDate(blog.date)}
+                </time>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="h-4 w-4 text-[hsl(var(--terminal-yellow))]" />
+                <span className="text-muted-foreground">{blog.readingTime}</span>
+              </div>
             </div>
           </div>
 
-          <h1 className="text-4xl font-bold mb-4">{blog.title}</h1>
-
+          {/* Description as comment */}
           {blog.description && (
-            <p className="text-xl text-muted-foreground mb-6">
-              {blog.description}
-            </p>
+            <div className="code-block mb-6">
+              <p className="text-sm sm:text-base font-mono text-muted-foreground leading-relaxed">
+                <span className="text-[hsl(var(--terminal-blue))]">{`// `}</span>
+                {blog.description}
+              </p>
+            </div>
           )}
 
+          {/* Tags with hashtag style */}
           {blog.tags.length > 0 && (
-            <div className="flex items-center gap-2 mb-6">
-              <Tag className="h-4 w-4 text-muted-foreground" />
-              <div className="flex flex-wrap gap-2">
+            <div className="code-block mb-6">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-xs font-mono text-muted-foreground">tags:</span>
                 {blog.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2 py-1 rounded bg-muted text-muted-foreground text-sm"
+                    className="text-xs sm:text-sm font-mono text-[hsl(var(--terminal-blue))]"
                   >
-                    {tag}
+                    #{tag}
                   </span>
                 ))}
               </div>
             </div>
           )}
 
-          {/* Social Sharing */}
-          <div className="border-t pt-6">
-            <SocialShare blog={blog} />
-          </div>
+          {/* Social Sharing - Terminal Style */}
+          <SocialShare blog={blog} />
         </header>
 
         {/* Blog Content */}
-        <article className="prose prose-lg max-w-none dark:prose-invert">
-          <MDXRemote source={blog.content} />
+        <article className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-mono prose-code:font-mono prose-pre:code-block">
+          <MDXRemote 
+            source={blog.content}
+            options={{
+              mdxOptions: {
+                rehypePlugins: [rehypePrism],
+              },
+            }}
+          />
         </article>
 
         {/* Related Posts */}

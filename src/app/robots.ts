@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { personalInfo } from "@/config/personal";
 
 export const dynamic = "force-static";
 
@@ -9,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/private/"],
     },
-    sitemap: "https://iaashish13.github.io/sitemap.xml",
+    sitemap: `${personalInfo.siteUrl}/sitemap.xml`,
   };
 }

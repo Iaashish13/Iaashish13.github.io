@@ -12,7 +12,7 @@ export function createMetadata({
   path: string;
   image?: string;
 }): Metadata {
-  const url = `https://iaashish13.github.io${path}`;
+  const url = `${personalInfo.siteUrl}${path}`;
   const imageUrl = image || `${url}/og-image.jpg`;
 
   return {
@@ -74,14 +74,37 @@ export function createBlogMetadata({
   title,
   description,
   slug,
+  tags,
+  category,
 }: {
   title: string;
   description: string;
   slug: string;
+  tags?: string[];
+  category?: string;
 }): Metadata {
-  return createMetadata({
-    title,
-    description,
-    path: `/blog/${slug}`,
-  });
+  const keywords = [
+    ...(tags || []),
+    ...(category ? [category] : []),
+    "Flutter",
+    "React",
+    "Next.js",
+    "Mobile Development",
+    "Web Development",
+    "Software Engineering",
+    "Aashish Regmi",
+    "Tutorial",
+    "Blog",
+  ];
+
+  return {
+    ...createMetadata({
+      title,
+      description,
+      path: `/blog/${slug}`,
+    }),
+    keywords: [...new Set(keywords)], // Remove duplicates
+    category: category || "Technology",
+    classification: "Technology Blog",
+  };
 }
