@@ -25,10 +25,18 @@ const config: Config = {
           foreground: "hsl(var(--muted-foreground))",
         },
         border: "hsl(var(--border))",
+        terminal: {
+          green: "hsl(var(--terminal-green))",
+          blue: "hsl(var(--terminal-blue))",
+          yellow: "hsl(var(--terminal-yellow))",
+          red: "hsl(var(--terminal-red))",
+          purple: "hsl(var(--terminal-purple))",
+          cyan: "hsl(var(--terminal-cyan))",
+        },
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        mono: ["var(--font-jetbrains-mono)", "monospace"],
       },
       maxWidth: {
         container: "1200px",

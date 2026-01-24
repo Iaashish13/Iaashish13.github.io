@@ -162,22 +162,6 @@ export const categories = {
 
 ### Step 7: Add Your Blog Posts
 
-#### Option A: Using Admin Interface (Recommended)
-
-1. **Start development server**:
-
-   ```bash
-   npm run dev
-   ```
-
-2. **Visit admin interface**:
-   - Go to `http://localhost:3000/admin`
-   - Click "New Blog Post"
-   - Fill out the form with your content
-   - Preview and save
-
-#### Option B: Manual Creation
-
 Create blog posts in `src/content/blogs/[category]/[slug].md`:
 
 ````markdown
@@ -238,13 +222,11 @@ Hooks make React development more intuitive and functional...
    - Blog: `http://localhost:3000/blog`
    - About: `http://localhost:3000/about`
    - Experience: `http://localhost:3000/experience`
-   - Admin: `http://localhost:3000/admin`
 
 3. **Test features**:
    - Theme toggle (light/dark mode)
    - Blog search and filtering
    - Responsive design (mobile/tablet/desktop)
-   - Admin interface (create/edit/delete posts)
 
 ### Step 9: Deploy to GitHub Pages
 

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { personalInfo } from "@/config/personal";
 
 const navigation = [
@@ -19,39 +18,38 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="max-w-6xl mx-auto px-4 flex h-16 items-center justify-between">
         <Link
           href="/"
-          className="text-lg font-light text-gray-900 dark:text-gray-100"
+          className="font-mono text-sm font-bold text-foreground hover:text-[hsl(var(--terminal-green))] transition-colors"
         >
-          {personalInfo.name}
+          <span className="text-[hsl(var(--terminal-green))]">~/</span>
+          {personalInfo.name.toLowerCase().replace(" ", "-")}
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-1">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className={`text-sm font-light transition-colors ${
+              className={`px-3 py-2 text-sm font-mono rounded transition-colors ${
                 pathname === item.href
-                  ? "text-gray-900 dark:text-gray-100"
-                  : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+                  ? "bg-secondary text-foreground"
+                  : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
               }`}
             >
-              {item.name}
+              {item.name.toLowerCase()}
             </Link>
           ))}
         </nav>
 
         <div className="flex items-center gap-4">
-          <ThemeToggle />
-
           {/* Mobile menu button */}
           <button
             type="button"
-            className="md:hidden p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+            className="md:hidden p-2 text-muted-foreground hover:text-foreground"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span className="sr-only">Open main menu</span>
@@ -66,20 +64,20 @@ export function Header() {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-200/50 dark:border-gray-700/50">
-          <div className="px-4 py-4 space-y-2">
+        <div className="md:hidden bg-background/95 backdrop-blur-sm border-t border-border">
+          <div className="px-4 py-4 space-y-1">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`block py-2 text-sm font-light transition-colors ${
+                className={`block px-3 py-2 text-sm font-mono rounded transition-colors ${
                   pathname === item.href
-                    ? "text-gray-900 dark:text-gray-100"
-                    : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+                    ? "bg-secondary text-foreground"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {item.name}
+                {item.name.toLowerCase()}
               </Link>
             ))}
           </div>

@@ -1,81 +1,35 @@
-"use client";
-
-import { useState, useMemo } from "react";
 import { getAllBlogs } from "@/lib/mdx";
 import { BlogCard } from "@/components/blog/blog-card";
 import { CategoryFilter } from "@/components/blog/category-filter";
 import { Search } from "@/components/blog/search";
+import { BlogClientWrapper } from "@/components/blog/blog-client-wrapper";
+import { FileText } from "lucide-react";
 
 export default function BlogPage() {
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [searchQuery, setSearchQuery] = useState("");
   const allBlogs = getAllBlogs();
 
-  const filteredBlogs = useMemo(() => {
-    let filtered = allBlogs;
-
-    // Filter by category
-    if (selectedCategory !== "all") {
-      filtered = filtered.filter(
-        (blog) => blog.subCategory === selectedCategory
-      );
-    }
-
-    // Filter by search query
-    if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(
-        (blog) =>
-          blog.title.toLowerCase().includes(query) ||
-          blog.description.toLowerCase().includes(query) ||
-          blog.tags.some((tag) => tag.toLowerCase().includes(query))
-      );
-    }
-
-    return filtered;
-  }, [allBlogs, selectedCategory, searchQuery]);
-
   return (
-    <div className="container py-8">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">Blog</h1>
-        <p className="text-lg text-muted-foreground">
-          Thoughts, tutorials, and insights about Flutter, React, and software
-          development.
-        </p>
-      </div>
-
-      {/* Search */}
-      <div className="mb-6">
-        <Search
-          value={searchQuery}
-          onChange={setSearchQuery}
-          placeholder="Search blog posts..."
-        />
-      </div>
-
-      {/* Category Filter */}
-      <CategoryFilter
-        selectedCategory={selectedCategory}
-        onCategoryChange={setSelectedCategory}
-      />
-
-      {/* Blog Posts Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredBlogs.map((blog) => (
-          <BlogCard key={blog.slug} blog={blog} />
-        ))}
-      </div>
-
-      {filteredBlogs.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-muted-foreground">
-            {searchQuery.trim() || selectedCategory !== "all"
-              ? "No blog posts found matching your criteria."
-              : "No blog posts found."}
+    <div className="min-h-screen py-8 px-4">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="mb-12">
+          <div className="flex items-center gap-3 mb-4">
+            <FileText className="h-6 w-6 text-[hsl(var(--terminal-green))]" />
+            <h1 className="text-2xl sm:text-3xl font-bold font-mono text-foreground">
+              blog_posts/
+            </h1>
+          </div>
+          <p className="text-sm font-mono text-muted-foreground">
+            <span className="text-[hsl(var(--terminal-blue))]">{'// Thoughts, tutorials, and insights about Flutter, React, and software development'}</span>
           </p>
+          <div className="mt-4 font-mono text-sm text-muted-foreground">
+            <span className="text-[hsl(var(--terminal-cyan))]">total:</span> {allBlogs.length} posts
+          </div>
         </div>
-      )}
+
+        {/* Client-side filtering */}
+        <BlogClientWrapper blogs={allBlogs} />
+      </div>
     </div>
   );
 }

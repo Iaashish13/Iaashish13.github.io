@@ -17,11 +17,11 @@ export function CategoryFilter({
 
   return (
     <div className="mb-8">
-      <h2 className="text-xl font-semibold mb-4">Filter by Category</h2>
-      <div className="flex flex-wrap gap-2">
+      <h2 className="text-lg sm:text-xl font-semibold mb-4">Filter by Category</h2>
+      <div className="flex gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:overflow-visible">
         <button
           onClick={() => onCategoryChange("all")}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+          className={`whitespace-nowrap px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm rounded-lg font-medium transition-colors ${
             selectedCategory === "all"
               ? "bg-primary text-primary-foreground"
               : "bg-muted text-muted-foreground hover:bg-primary hover:text-primary-foreground"
@@ -33,7 +33,7 @@ export function CategoryFilter({
           <button
             key={subCategory}
             onClick={() => onCategoryChange(subCategory)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+            className={`whitespace-nowrap px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm rounded-lg font-medium transition-colors ${
               selectedCategory === subCategory
                 ? "bg-primary text-primary-foreground"
                 : "bg-muted text-muted-foreground hover:bg-primary hover:text-primary-foreground"

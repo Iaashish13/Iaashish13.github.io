@@ -12,7 +12,7 @@ Migrating from Flutter to Next.js 14+ to create a **blog-first portfolio** that'
 - **Category System**: Frontend/Backend/Other with sub-categories
 - **Minimalist UI**: Clean, responsive design with light/dark themes
 - **Easy Customization**: All content configurable via simple files
-- **Local Development**: Admin/preview mode for writing blogs
+- **File-Based Content**: Simple Markdown workflow for writing blogs
 - **Responsive Design**: Mobile-first with tablet and desktop optimizations
 
 ### Blog System
@@ -70,8 +70,6 @@ portfolio-blog/
 │   │   ├── about/             # About page
 │   │   │   └── page.tsx
 │   │   ├── experience/        # Work experience
-│   │   │   └── page.tsx
-│   │   ├── admin/             # Admin/preview routes (dev only)
 │   │   │   └── page.tsx
 │   │   ├── layout.tsx         # Root layout
 │   │   └── page.tsx           # Homepage
@@ -327,14 +325,14 @@ export const skills = {
 - Implement proper SEO structure
 - Test performance metrics
 
-### Week 5: Admin & Documentation
+### Week 5: Content & Documentation
 
-**Days 1-3: Admin Interface**
+**Days 1-3: Content Organization**
 
-- Create local development admin page
-- Build draft management system
-- Add category assignment interface
-- Implement live preview functionality
+- Organize blog posts by categories
+- Add example blog posts
+- Create content templates
+- Set up content workflow
 
 **Days 4-5: Documentation**
 
@@ -409,14 +407,14 @@ export const skills = {
 - **Grid**: CSS Grid for layouts
 - **Flexbox**: For component layouts
 
-## Admin/Preview Features
+## Content Workflow
 
-### Local Development Setup
+### File-Based Blog Creation
 
-- File-based blog creation
-- Category/sub-category assignment
-- Live preview functionality
-- Draft management system
+- Simple Markdown/MDX file creation
+- Category/sub-category organization
+- Git-based version control
+- Direct file editing in code editor
 
 ### Blog Writing Workflow
 
@@ -520,7 +518,6 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
 ### Phase 3 Features
 
 - Multi-language support
-- Advanced admin panel
 - Content scheduling
 - Social media integration
 - Advanced analytics

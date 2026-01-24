@@ -12,8 +12,8 @@ A modern, responsive portfolio website built with Next.js 14+, TypeScript, and T
 - **🔍 SEO Optimized**: Built-in SEO with meta tags, sitemap, and structured data
 - **⚡ Fast Performance**: Static generation with optimized loading
 - **🛠️ Easy Customization**: All content configurable via simple files
-- **📊 Admin Interface**: Local development admin for blog management
 - **🎯 Category System**: Organized blog categories and sub-categories
+- **✍️ File-Based Content**: Simple Markdown-based blog post creation
 
 ## 🚀 Quick Start (Forking Guide)
 
@@ -143,7 +143,6 @@ npm run build
 portfolio-blog/
 ├── src/
 │   ├── app/                    # Next.js App Router
-│   │   ├── admin/             # Admin interface (dev only)
 │   │   ├── blog/              # Blog routes
 │   │   ├── about/             # About page
 │   │   ├── experience/        # Work experience
@@ -161,7 +160,6 @@ portfolio-blog/
 │   │   └── skills.ts         # Skills data
 │   ├── lib/                  # Utilities
 │   │   ├── mdx.ts           # MDX utilities
-│   │   ├── admin.ts         # Admin utilities
 │   │   └── utils.ts         # General utilities
 │   └── types/                # TypeScript types
 ├── public/                   # Static assets
@@ -174,15 +172,7 @@ portfolio-blog/
 
 ### Creating New Blog Posts
 
-1. **Using Admin Interface** (Recommended):
-
-   ```bash
-   npm run dev
-   # Visit http://localhost:3000/admin/new
-   ```
-
-2. **Manual Creation**:
-   Create a new `.md` file in `src/content/blogs/[category]/[slug].md`:
+Create a new `.md` file in `src/content/blogs/[category]/[slug].md`:
 
    ````markdown
    ---
@@ -234,22 +224,22 @@ portfolio-blog/
 - **Backend**: Node.js, Python, Java, Go, etc.
 - **Other**: DevOps, Architecture, General Tech, etc.
 
-## 🛠️ Admin Interface
+### Quick Workflow
 
-The admin interface is available at `/admin` during development:
+```bash
+# 1. Create a new blog post
+code src/content/blogs/frontend/my-awesome-post.md
 
-- **Dashboard**: View blog statistics
-- **Blog Management**: Edit, delete, and preview posts
-- **New Post Creation**: Create new blog posts with live preview
-- **Category Management**: Organize posts by categories
+# 2. Preview locally
+npm run dev
 
-### Admin Features
+# 3. Publish
+git add .
+git commit -m "Add new blog post: My Awesome Post"
+git push
+```
 
-- ✅ **Create New Posts**: Full form with live preview
-- ✅ **Edit Existing Posts**: Modify metadata and content
-- ✅ **Delete Posts**: With confirmation popup
-- ✅ **Preview Posts**: See how posts will look
-- ✅ **Category Assignment**: Easy category selection
+Your changes will automatically deploy via GitHub Actions! 🚀
 
 ## 🎨 Customization
 
