@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Twitter, Linkedin, Facebook, Link as LinkIcon } from "lucide-react";
 import { BlogMeta } from "@/types/blog";
 
@@ -8,7 +9,12 @@ interface SocialShareProps {
 }
 
 export function SocialShare({ blog }: SocialShareProps) {
-  const url = typeof window !== "undefined" ? window.location.href : "";
+  const [url, setUrl] = useState("");
+
+  useEffect(() => {
+    setUrl(window.location.href);
+  }, []);
+
   const text = `${blog.title} - ${blog.description}`;
 
   const shareUrls = {
