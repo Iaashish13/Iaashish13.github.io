@@ -8,6 +8,6 @@ export const personalInfo = {
   twitter: "https://x.com/whois_aashish_",
   medium: "https://medium.com/@aashishregmi",
   about:
-    "Namaste!! I am Aashish Regmi. Sometimes I want to learn the teaching from the holy books like Geta and Vedas. Also I am quite fond of upcoming gadgets like foldable phones, new devices from Apple and Samsung compare them and review them. Before I use to play with custom roms with Android, experimenting them rooting, using xposed and trying to do things what hardware is capable. That got interest in me development. Also slowly leaning toward Sprituality. 😁",
+    "Namaste!! I am Aashish Regmi. I love exploring the teachings from holy books like the Gita and Vedas. I'm also quite fond of upcoming gadgets — foldable phones, new devices from Apple and Samsung — comparing and reviewing them. I used to tinker with custom ROMs on Android, experimenting with rooting, Xposed, and pushing hardware to its limits. That sparked my interest in development. I'm also slowly leaning toward Spirituality. 😁",
   photo: "/images/profile.jpg",
 };
