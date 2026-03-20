@@ -67,6 +67,29 @@
     @apply prose-li:text-foreground prose-li:marker:text-[hsl(var(--terminal-green))];
     @apply prose-hr:border-border;
     @apply prose-table:text-foreground prose-th:font-mono prose-th:font-bold;
+    @apply prose-td:border prose-td:border-border prose-td:px-3 prose-td:py-2 prose-td:text-sm prose-td:align-top;
+    @apply prose-th:border prose-th:border-border prose-th:px-3 prose-th:py-2 prose-th:bg-muted prose-th:text-sm prose-th:align-middle;
+  }
+
+  /* Responsive table wrapper */
+  .prose table {
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .prose thead tr {
+    @apply border-b-2 border-[hsl(var(--terminal-green))];
+  }
+
+  .prose tbody tr:nth-child(even) {
+    @apply bg-muted/30;
+  }
+
+  .prose tbody tr:hover {
+    @apply bg-muted/50;
   }
 
   .prose.dark {
@@ -81,6 +104,8 @@
     @apply prose-li:text-foreground prose-li:marker:text-[hsl(var(--terminal-green))];
     @apply prose-hr:border-border;
     @apply prose-table:text-foreground prose-th:font-mono prose-th:font-bold;
+    @apply prose-td:border prose-td:border-border prose-td:px-3 prose-td:py-2 prose-td:text-sm prose-td:align-top;
+    @apply prose-th:border prose-th:border-border prose-th:px-3 prose-th:py-2 prose-th:bg-muted prose-th:text-sm prose-th:align-middle;
   }
 
   /* Enhanced code block styling */

@@ -9,6 +9,7 @@ import { RelatedPosts } from "@/components/blog/related-posts";
 import { createBlogMetadata } from "@/lib/metadata";
 import { Metadata } from "next";
 import rehypePrism from "rehype-prism-plus";
+import remarkGfm from "remark-gfm";
 import "prismjs/themes/prism-tomorrow.css";
 import { StructuredData } from "@/components/seo/structured-data";
 
@@ -142,10 +143,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Blog Content */}
         <article className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-mono prose-code:font-mono prose-pre:code-block">
-          <MDXRemote 
+          <MDXRemote
             source={blog.content}
             options={{
               mdxOptions: {
+                remarkPlugins: [remarkGfm],
                 rehypePlugins: [rehypePrism],
               },
             }}
