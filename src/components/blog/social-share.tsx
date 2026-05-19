@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Twitter, Linkedin, Facebook, Link as LinkIcon } from "lucide-react";
+import { Link as LinkIcon } from "lucide-react";
+import { FaXTwitter, FaLinkedin, FaFacebook } from "react-icons/fa6";
 import { BlogMeta } from "@/types/blog";
 
 interface SocialShareProps {
@@ -52,7 +53,7 @@ export function SocialShare({ blog }: SocialShareProps) {
           className="px-3 py-1.5 rounded bg-secondary hover:bg-muted border border-border hover:border-[hsl(var(--terminal-cyan))] transition-colors text-xs font-mono flex items-center gap-2"
           aria-label="Share on Twitter"
         >
-          <Twitter className="h-3 w-3" />
+          <FaXTwitter className="h-3 w-3" />
           <span className="text-muted-foreground">twitter</span>
         </a>
 
@@ -63,7 +64,7 @@ export function SocialShare({ blog }: SocialShareProps) {
           className="px-3 py-1.5 rounded bg-secondary hover:bg-muted border border-border hover:border-[hsl(var(--terminal-blue))] transition-colors text-xs font-mono flex items-center gap-2"
           aria-label="Share on LinkedIn"
         >
-          <Linkedin className="h-3 w-3" />
+          <FaLinkedin className="h-3 w-3" />
           <span className="text-muted-foreground">linkedin</span>
         </a>
 
@@ -74,7 +75,7 @@ export function SocialShare({ blog }: SocialShareProps) {
           className="px-3 py-1.5 rounded bg-secondary hover:bg-muted border border-border hover:border-[hsl(var(--terminal-purple))] transition-colors text-xs font-mono flex items-center gap-2"
           aria-label="Share on Facebook"
         >
-          <Facebook className="h-3 w-3" />
+          <FaFacebook className="h-3 w-3" />
           <span className="text-muted-foreground">facebook</span>
         </a>
 

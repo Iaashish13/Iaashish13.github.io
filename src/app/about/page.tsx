@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Mail, User, Code2, Terminal as TerminalIcon } from "lucide-react";
+import { Mail, User, Code2, Terminal as TerminalIcon } from "lucide-react";
+import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { personalInfo } from "@/config/personal";
 import { CodeBlock } from "@/components/ui/terminal";
 
@@ -90,7 +91,7 @@ export default function AboutPage() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-3 py-2 bg-secondary hover:bg-muted border border-border rounded text-sm font-mono transition-colors"
                 >
-                  <Github className="h-4 w-4" />
+                  <FaGithub className="h-4 w-4" />
                   <span className="text-muted-foreground">GitHub</span>
                 </Link>
                 <Link
@@ -99,7 +100,7 @@ export default function AboutPage() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-3 py-2 bg-secondary hover:bg-muted border border-border rounded text-sm font-mono transition-colors"
                 >
-                  <Linkedin className="h-4 w-4" />
+                  <FaLinkedin className="h-4 w-4" />
                   <span className="text-muted-foreground">LinkedIn</span>
                 </Link>
                 <Link
@@ -108,7 +109,7 @@ export default function AboutPage() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-3 py-2 bg-secondary hover:bg-muted border border-border rounded text-sm font-mono transition-colors"
                 >
-                  <Twitter className="h-4 w-4" />
+                  <FaXTwitter className="h-4 w-4" />
                   <span className="text-muted-foreground">Twitter</span>
                 </Link>
                 <Link

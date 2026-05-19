@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Mail, ArrowRight, Terminal as TerminalIcon, Code2, Cpu } from "lucide-react";
+import { Mail, ArrowRight, Terminal as TerminalIcon, Code2, Cpu } from "lucide-react";
+import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { personalInfo } from "@/config/personal";
 import { skills } from "@/config/skills";
 import { getAllBlogs } from "@/lib/mdx";
@@ -123,7 +124,7 @@ export default function HomePage() {
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 px-3 py-2 bg-secondary hover:bg-muted border border-border rounded text-sm font-mono transition-colors"
                   >
-                    <Github className="h-4 w-4" />
+                    <FaGithub className="h-4 w-4" />
                     <span className="text-muted-foreground">GitHub</span>
                   </Link>
                   <Link
@@ -132,7 +133,7 @@ export default function HomePage() {
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 px-3 py-2 bg-secondary hover:bg-muted border border-border rounded text-sm font-mono transition-colors"
                   >
-                    <Linkedin className="h-4 w-4" />
+                    <FaLinkedin className="h-4 w-4" />
                     <span className="text-muted-foreground">LinkedIn</span>
                   </Link>
                   <Link
@@ -141,7 +142,7 @@ export default function HomePage() {
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 px-3 py-2 bg-secondary hover:bg-muted border border-border rounded text-sm font-mono transition-colors"
                   >
-                    <Twitter className="h-4 w-4" />
+                    <FaXTwitter className="h-4 w-4" />
                     <span className="text-muted-foreground">Twitter</span>
                   </Link>
                   <Link

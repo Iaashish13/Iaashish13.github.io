@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Terminal } from "lucide-react";
+import { Terminal } from "lucide-react";
+import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { personalInfo } from "@/config/personal";
 
 export function Footer() {
@@ -65,7 +66,7 @@ export function Footer() {
                 className="p-2 bg-secondary hover:bg-muted border border-border rounded transition-colors"
                 title="GitHub"
               >
-                <Github className="h-4 w-4 text-muted-foreground" />
+                <FaGithub className="h-4 w-4 text-muted-foreground" />
               </Link>
               <Link
                 href={personalInfo.linkedin}
@@ -74,7 +75,7 @@ export function Footer() {
                 className="p-2 bg-secondary hover:bg-muted border border-border rounded transition-colors"
                 title="LinkedIn"
               >
-                <Linkedin className="h-4 w-4 text-muted-foreground" />
+                <FaLinkedin className="h-4 w-4 text-muted-foreground" />
               </Link>
               <Link
                 href={personalInfo.twitter}
@@ -83,7 +84,7 @@ export function Footer() {
                 className="p-2 bg-secondary hover:bg-muted border border-border rounded transition-colors"
                 title="Twitter"
               >
-                <Twitter className="h-4 w-4 text-muted-foreground" />
+                <FaXTwitter className="h-4 w-4 text-muted-foreground" />
               </Link>
             </div>
           </div>
