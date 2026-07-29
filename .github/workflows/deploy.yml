@@ -47,6 +47,8 @@ jobs:
           path: ./out
 
   deploy:
+    # Only deploy on pushes to main; PRs run build (validation) but never publish.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

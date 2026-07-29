@@ -1,5 +1,16 @@
 import { personalInfo } from "@/config/personal";
 
+// Escape characters that could break out of a <script> tag or corrupt JSON-LD.
+// Prevents stored XSS if frontmatter (e.g. a blog title) ever contains "</script>".
+function serializeJsonLd(schema: object): string {
+  return JSON.stringify(schema)
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/&/g, "\\u0026")
+    .replace(/\u2028/g, "\\u2028")
+    .replace(/\u2029/g, "\\u2029");
+}
+
 interface PersonSchemaProps {
   type?: "Person" | "BlogPosting" | "Article";
   blogData?: {
@@ -44,7 +55,7 @@ export function StructuredData({ type = "Person", blogData }: PersonSchemaProps)
     return (
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(personSchema) }}
       />
     );
   }
@@ -81,7 +92,7 @@ export function StructuredData({ type = "Person", blogData }: PersonSchemaProps)
     return (
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(blogSchema) }}
       />
     );
   }
@@ -110,7 +121,7 @@ export function WebsiteSchema() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(websiteSchema) }}
     />
   );
 }
